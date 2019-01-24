@@ -14,6 +14,8 @@ const Ingredients = require('./ingredients')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
+User.belongsToMany(User, {as: 'friends', through: 'userfriends'})
+
 module.exports = {
   User,
   Ingredients

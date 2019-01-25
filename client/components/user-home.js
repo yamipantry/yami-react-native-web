@@ -1,17 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {View, Text} from 'react-native'
 
 /**
  * COMPONENT
  */
 export const UserHome = props => {
   const {email} = props
+  const {pantry} = props || []
+  console.log('props', props)
 
   return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
+    <View>
+      <Text h3>Welcome, {email}</Text>
+      <ul>
+        {pantry.map((elem, index) => {
+          return <li key={index}>{elem}</li>
+        })}
+      </ul>
+    </View>
   )
 }
 
@@ -20,7 +28,8 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    email: state.user.email
+    email: state.user.email,
+    pantry: state.user.pantryItems
   }
 }
 

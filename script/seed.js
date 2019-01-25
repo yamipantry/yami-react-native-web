@@ -2,7 +2,6 @@
 
 const db = require('../server/db')
 const {User, Recipes, Ingredients} = require('../server/db/models')
-const {hash} = require('../util')
 
 async function seed() {
   await db.sync({force: true})
@@ -19,7 +18,7 @@ async function seed() {
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
-      pantryItems: [2, 3, 4, 100],
+      pantryItems: [3, 6, 5, 10],
       profileImage: '/pic.jpeg'
     }),
     User.create({
@@ -32,7 +31,7 @@ async function seed() {
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
-      pantryItems: [4, 3, 109, 225],
+      pantryItems: [4, 3, 11, 13],
       profileImage: '/pic.jpeg'
     }),
     User.create({
@@ -45,7 +44,7 @@ async function seed() {
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
-      pantryItems: [3, 7, 6, 100],
+      pantryItems: [2, 3, 4, 10],
       profileImage: '/pic.jpeg'
     }),
     User.create({
@@ -58,62 +57,49 @@ async function seed() {
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
-      pantryItems: [10, 11, 1, 2, 3, 17],
+      pantryItems: [7, 8, 1, 2, 3, 9],
       profileImage: '/pic.jpeg'
     })
   ])
 
   const ingredients = await Promise.all([
     Ingredients.create({
-      uuid: 1,
       name: 'carrots'
     }),
     Ingredients.create({
-      uuid: 2,
       name: 'beans'
     }),
     Ingredients.create({
-      uuid: 3,
       name: 'butternut squash'
     }),
     Ingredients.create({
-      uuid: 4,
       name: 'lettuce'
     }),
     Ingredients.create({
-      uuid: 6,
       name: 'beef'
     }),
     Ingredients.create({
-      uuid: 7,
       name: 'chicken'
     }),
     Ingredients.create({
-      uuid: 10,
       name: 'sugar'
     }),
     Ingredients.create({
-      uuid: 11,
       name: 'rabbit'
     }),
     Ingredients.create({
-      uuid: 17,
       name: 'tomato'
     }),
     Ingredients.create({
-      uuid: 100,
       name: 'celery'
     }),
     Ingredients.create({
-      uuid: 109,
       name: 'love'
     }),
     Ingredients.create({
-      uuid: 223,
       name: 'pepperoni'
     }),
     Ingredients.create({
-      uuid: 225,
       name: 'flour'
     })
   ])
@@ -121,7 +107,7 @@ async function seed() {
   const recipe = await Promise.all([
     Recipes.create({
       name: 'Salad Soup',
-      ingredientsIds: [2, 3, 4, 100],
+      ingredientsIds: [2, 3, 4, 10],
       instructions: [
         'Turn on fire',
         'dont burn yourself',
@@ -138,7 +124,7 @@ async function seed() {
     }),
     Recipes.create({
       name: 'Mystery Dish',
-      ingredientsIds: [4, 3, 109, 225],
+      ingredientsIds: [4, 3, 11, 13],
       instructions: [
         'add ingredient 4',
         'then add ingredient 3',
@@ -157,7 +143,7 @@ async function seed() {
     }),
     Recipes.create({
       name: 'Rabbit Cacciatore',
-      ingredientsIds: [10, 11, 1, 2, 3, 17],
+      ingredientsIds: [7, 8, 1, 2, 3, 9],
       instructions: [
         'start with sugar',
         'add carrots',
@@ -177,7 +163,7 @@ async function seed() {
     }),
     Recipes.create({
       name: 'Blowfish Delight',
-      ingredientsIds: [3, 7, 6, 100],
+      ingredientsIds: [3, 6, 5, 10],
       instructions: ['dont even try to make this', 'this is not for amateurs'],
       description: 'This recipe will only be good with some blowfish',
       imageUrl: '/blowfish.jpeg',
@@ -190,7 +176,7 @@ async function seed() {
     }),
     Recipes.create({
       name: 'Stewd Rabbit',
-      ingredientsIds: [10, 11, 1, 2, 3, 17],
+      ingredientsIds: [7, 8, 1, 2, 3, 9],
       instructions: ['find rabbit', 'hunt rabbit', 'eat rabbit'],
       description: 'rabbit cacciatore',
       imageUrl: '/rabbit.jpeg',

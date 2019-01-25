@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const User = require('../db/models/user')
+const {User, Ingredients} = require('../db/models/')
 module.exports = router
 
 router.post('/login', async (req, res, next) => {
   try {
-    const user = await User.findOne({where: {email: req.body.email}})
+    let user = await User.findOne({where: {email: req.body.email}})
     if (!user) {
       console.log('No such user found:', req.body.email)
       res.status(401).send('Wrong username and/or password')
@@ -12,6 +12,13 @@ router.post('/login', async (req, res, next) => {
       console.log('Incorrect password for user:', req.body.email)
       res.status(401).send('Wrong username and/or password')
     } else {
+      const pantryNames = await Ingredients.findAll({
+        where: {
+          id: user.pantryItems
+        },
+        attributes: ['id', 'name']
+      })
+      user.dataValues.pantryNames = pantryNames
       req.login(user, err => (err ? next(err) : res.json(user)))
     }
   } catch (err) {

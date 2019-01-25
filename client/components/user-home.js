@@ -9,7 +9,6 @@ import {View, Text} from 'react-native'
 export const UserHome = props => {
   const {email} = props
   const {pantry} = props || []
-  console.log('props', props)
 
   return (
     <View>

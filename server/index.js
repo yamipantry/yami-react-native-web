@@ -34,13 +34,13 @@ passport.serializeUser((user, done) => done(null, user.id))
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await db.models.user.findById(id)
-    const pantryNames = await db.models.ingredients.findAll({
-      where: {
-        id: user.pantryItems
-      },
-      attributes: ['id', 'name']
-    })
-    user.dataValues.pantryNames = pantryNames
+    // const pantryNames = await db.models.ingredients.findAll({
+    //   where: {
+    //     id: user.pantryItems
+    //   },
+    //   attributes: ['id', 'name']
+    // })
+    // user.dataValues.pantryNames = pantryNames
     done(null, user)
   } catch (err) {
     done(err)

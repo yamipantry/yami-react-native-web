@@ -38,7 +38,8 @@ const User = db.define('user', {
     type: Sequelize.STRING
   },
   pantryItems: {
-    type: Sequelize.ARRAY(Sequelize.INTEGER)
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: []
   },
   profileImage: {
     type: Sequelize.STRING

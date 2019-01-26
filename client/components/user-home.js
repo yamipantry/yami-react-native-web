@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {View, Text} from 'react-native'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -9,14 +10,18 @@ import {View, Text} from 'react-native'
 export const UserHome = props => {
   const {email} = props
   const {pantry} = props || []
+  console.log('pantry', pantry)
   return (
     <View>
-      <Text h3>Welcome, {email}</Text>
+      <Text h3="true">Welcome, {email}</Text>
       <ul>
-        {pantry.map(elem => {
-          return <li key={elem.id}>{elem.name}</li>
+        {pantry.map((elem, idx) => {
+          return <li key={idx}>{elem}</li>
         })}
       </ul>
+      <button>
+        <Link to="/recipe">Recipes</Link>
+      </button>
     </View>
   )
 }
@@ -27,7 +32,7 @@ export const UserHome = props => {
 const mapState = state => {
   return {
     email: state.user.email,
-    pantry: state.user.pantryNames
+    pantry: state.user.pantryItems
   }
 }
 

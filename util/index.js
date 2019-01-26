@@ -29,4 +29,8 @@ const hash = ingr => {
   return number
 }
 
-module.exports = {intersection, hash}
+const filtering = (recipe, pantry) => {
+  return recipe.filter(x => !pantry.includes(x))
+}
+
+module.exports = {intersection, hash, filtering}

@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Ingredients} = require('../db/models')
+const Sequelize = require('sequelize')
 
 module.exports = router
 
@@ -19,4 +20,17 @@ router.get('/', async (req, res, next) => {
       next(err)
     }
   }
+})
+
+router.get('/testSQL', async (req, res, next) => {
+  const Op = Sequelize.Op
+  const suggestions = await Ingredients.findAll({
+    where: {
+      name: {
+        [Op.like]: req.query.name + '%'
+      }
+    },
+    limit: 1
+  })
+  res.json(suggestions)
 })

@@ -7,6 +7,7 @@ import {View, Text} from 'react-native'
  * COMPONENT
  */
 export const UserHome = props => {
+  console.log(props)
   const {email} = props
   const {pantry} = props || []
   return (

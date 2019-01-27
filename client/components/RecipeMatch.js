@@ -1,33 +1,53 @@
 import React from 'react'
-import {View, Text, ListItem} from 'react-native'
+import {View, Text, ListItem, Image} from 'react-native'
 import {connect} from 'react-redux'
-import {matchedThunk} from '../store'
+import {recipesThunk} from '../store'
+import {filtering} from '../../util'
 
 class RecipeMatch extends React.Component {
   constructor() {
     super()
+    this.state = {
+      loading: true
+    }
   }
-  async componentDidMount() {
-    await this.props.matchThunk()
+
+  async load() {
+    if (!this.state.loading) {
+      this.setState({loading: true})
+    }
+    await this.props.recipesThunk()
+    this.setState({loading: false})
   }
+  componentDidMount() {
+    setTimeout(() => {
+      this.load()
+    }, 400)
+  }
+
   render() {
-    const {matched} = this.props || [] // 3,1,4
+    const {recipes} = this.props || [] // 3,1,4
+    if (this.state.loading) {
+      return (
+        <View className="fun">
+          <Text>Loading</Text>
+        </View>
+      )
+    }
     return (
       <View>
-        {matched.map(elem => {
+        {recipes.map(recipe => {
+          const ingList = recipe.ingredientsIncluded || []
           return (
-            <ul key={elem.recipe.id}>
-              <li>{elem.recipe.name}</li>
-              <img src={elem.recipe.imageUrl} />
-              <li>{elem.recipe.description}</li>
-              {elem.recipe.instructions.map((ins, idx) => {
-                return (
-                  <ul key={idx}>
-                    <li>{ins}</li>
-                  </ul>
-                )
-              })}
-            </ul>
+            <View key={recipe.id}>
+              <Text key={recipe.id}>{recipe.name}</Text>
+              <img src={recipe.imageUrl} style={{width: 100, height: 100}} />
+              <ul>
+                {ingList.map((ing, idx) => {
+                  return <li key={idx}>{ing.ingredientName}</li>
+                })}
+              </ul>
+            </View>
           )
         })}
       </View>
@@ -37,11 +57,12 @@ class RecipeMatch extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    matched: state.matched
+    recipes: state.recipes.result,
+    pantry: state.user.pantryItems
   }
 }
 const mapDispatchToProps = {
-  matchThunk: matchedThunk
+  recipesThunk: recipesThunk
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeMatch)

@@ -30,7 +30,10 @@ const hash = ingr => {
 }
 
 const filtering = (recipe, pantry) => {
-  return recipe.filter(x => !pantry.includes(x))
+  const len = recipe.filter(x => !pantry.includes(x))
+  if (len.length <= 2) {
+    return len
+  }
 }
 
 module.exports = {intersection, hash, filtering}

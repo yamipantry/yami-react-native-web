@@ -114,7 +114,6 @@ async function seed() {
   const recipe = await Promise.all([
     Recipes.create({
       name: 'Salad Soup',
-      ingredientsIds: ['beans', 'butternut squash', 'lettuce', 'celery'],
       instructions: [
         'Turn on fire',
         'dont burn yourself',
@@ -122,16 +121,9 @@ async function seed() {
       ],
       description: 'People always burn themselves with this meal',
       imageUrl: '/salad_soup.jpeg'
-      // ingredientAmounts: [
-      //   '2 cups beans',
-      //   '1 cup butternut squash',
-      //   '1 head chopped lettuce',
-      //   '1 cup chopped celery'
-      // ]
     }),
     Recipes.create({
       name: 'Mystery Dish',
-      ingredientsIds: ['lettuce', 'butternut squash', 'love', 'flour'],
       instructions: [
         'add ingredient 4',
         'then add ingredient 3',
@@ -141,23 +133,9 @@ async function seed() {
       description:
         'when all these ingredients are added together, you get 434109225',
       imageUrl: '/mystery.jpeg'
-      // ingredientAmounts: [
-      //   '1 head chopped lettuce',
-      //   '2 cups butternut squash',
-      //   '2 gallons love',
-      //   '1 cup flour'
-      // ]
     }),
     Recipes.create({
       name: 'Rabbit Cacciatore',
-      ingredientsIds: [
-        'sugar',
-        'rabbit',
-        'carrot',
-        'beans',
-        'butternut squash',
-        'tomato'
-      ],
       instructions: [
         'start with sugar',
         'add carrots',
@@ -166,49 +144,18 @@ async function seed() {
       ],
       description: 'This is the best delicious recipe of all time',
       imageUrl: '/rabbit.jpeg'
-      // ingredientAmounts: [
-      //   '0.5 cups sugar',
-      //   '1 rabbit',
-      //   '1 carrot',
-      //   '2 cups beans',
-      //   '0.5 butternut squash',
-      //   '1 tomato'
-      // ]
     }),
     Recipes.create({
       name: 'Blowfish Delight',
-      ingredientsIds: ['butternut squash', 'chicken', 'beef', 'celery'],
       instructions: ['dont even try to make this', 'this is not for amateurs'],
       description: 'This recipe will only be good with some blowfish',
       imageUrl: '/blowfish.jpeg'
-      // ingredientAmounts: [
-      //   '1 butternut squash',
-      //   '2 chicken breasts',
-      //   '1 beef',
-      //   '2 cups chopped celery'
-      // ]
     }),
     Recipes.create({
       name: 'Stewd Rabbit',
-      ingredientsIds: [
-        'sugar',
-        'rabbit',
-        'carrots',
-        'beans',
-        'butternut squash',
-        'tomato'
-      ],
       instructions: ['find rabbit', 'hunt rabbit', 'eat rabbit'],
       description: 'rabbit cacciatore',
       imageUrl: '/rabbit.jpeg'
-      // ingredientAmounts: [
-      //   '1 cup sugar',
-      //   '1 rabbit',
-      //   '1 carrot to woo rabbit',
-      //   '1 can of beans',
-      //   '1 butternut squash',
-      //   '1 tomato'
-      // ]
     })
   ])
 

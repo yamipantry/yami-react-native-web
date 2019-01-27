@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
  * COMPONENT
  */
 export const UserHome = props => {
+  console.log(props)
   const {email} = props
   const {pantry} = props || []
   return (

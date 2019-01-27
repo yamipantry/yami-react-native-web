@@ -30,7 +30,7 @@ router.get('/testSQL', async (req, res, next) => {
         [Op.like]: req.query.name + '%'
       }
     },
-    limit: 1
+    limit: 5
   })
   res.json(suggestions)
 })

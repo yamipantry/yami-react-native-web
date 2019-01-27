@@ -5,7 +5,7 @@ const intersection = (arrA, arrB) => {
   while (idxA < arrA.length && idxB < arrB.length) {
     const elemA = arrA[idxA]
     const elemB = arrB[idxB]
-    if (elemA == elemB) {
+    if (elemA === elemB) {
       shared.push(elemA)
     }
     if (elemA <= elemB) {

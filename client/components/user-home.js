@@ -22,6 +22,9 @@ export const UserHome = props => {
       <button>
         <Link to="/recipe">Recipes</Link>
       </button>
+      <button>
+        <Link to="/testSQL">Test Form</Link>
+      </button>
     </View>
   )
 }

@@ -6,7 +6,6 @@ const Ingredients = db.define('ingredients', {
     type: Sequelize.STRING,
     primaryKey: true,
     allowNull: false,
-    primaryKey: true,
     validate: {
       notEmpty: true
     }

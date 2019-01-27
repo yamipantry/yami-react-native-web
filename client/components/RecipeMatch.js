@@ -1,8 +1,7 @@
 import React from 'react'
-import {View, Text, ListItem, Image} from 'react-native'
+import {View, Text} from 'react-native'
 import {connect} from 'react-redux'
 import {recipesThunk} from '../store'
-import {filtering} from '../../util'
 
 class RecipeMatch extends React.Component {
   constructor() {

@@ -7,7 +7,21 @@ router.get('/', async (req, res, next) => {
       attributes: ['pantryItems']
     })
     const recipes = await Recipes.findIngredients()
-    const obj = {userPantry, recipes}
+    let result = []
+    let ingredientsArr = []
+    const pantry = userPantry.dataValues.pantryItems
+    const recipeToAdd = recipes
+    for (let i = 0; i < recipeToAdd.length; i++) {
+      let len = recipeToAdd[i].ingredientsIncluded.filter(
+        x => !pantry.includes(x.ingredientName)
+      )
+      if (len.length <= 2) {
+        ingredientsArr.push(len)
+        result.push(recipeToAdd[i])
+      }
+    }
+    const obj = {result, ingredientsArr}
+
     res.json(obj)
   } catch (err) {
     next(err)

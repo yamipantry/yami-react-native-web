@@ -19,21 +19,7 @@ export const recipesThunk = () => async dispatch => {
 const recipes = (state = [], action) => {
   switch (action.type) {
     case GET_RECIPES:
-      const recipeToAdd = action.recipes.recipes
-      const pantry = action.recipes.userPantry.pantryItems
-      let result = []
-      let ingredientsArr = []
-      for (let i = 0; i < recipeToAdd.length; i++) {
-        let len = recipeToAdd[i].ingredientsIncluded.filter(
-          x => !pantry.includes(x.ingredientName)
-        )
-        if (len.length <= 2) {
-          ingredientsArr.push(len)
-          result.push(recipeToAdd[i])
-        }
-      }
-      const obj = {result, ingredientsArr}
-      return obj
+      return action.recipes
     default:
       return state
   }

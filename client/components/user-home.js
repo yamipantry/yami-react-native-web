@@ -8,9 +8,9 @@ import {Link} from 'react-router-dom'
  * COMPONENT
  */
 export const UserHome = props => {
+  console.log(props)
   const {email} = props
   const {pantry} = props || []
-  console.log('pantry', pantry)
   return (
     <View>
       <Text h3="true">Welcome, {email}</Text>
@@ -21,6 +21,9 @@ export const UserHome = props => {
       </ul>
       <button>
         <Link to="/recipe">Recipes</Link>
+      </button>
+      <button>
+        <Link to="/testSQL">Test Form</Link>
       </button>
     </View>
   )

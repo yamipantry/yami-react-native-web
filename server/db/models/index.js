@@ -19,6 +19,7 @@ const Items = require('./ingredientList')
 
 // Items.belongsToMany(Ingredients, {through: 'items'})
 Items.belongsTo(Recipes)
+Recipes.hasMany(Items, {as: 'ingredientsIncluded'})
 Recipes.belongsToMany(Ingredients, {through: Items})
 Ingredients.belongsToMany(Recipes, {through: Items})
 

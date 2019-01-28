@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const {hash} = require('../../../util')
+const Items = require('./ingredientList')
+const User = require('./user')
 
 const Recipes = db.define('recipes', {
   name: {
@@ -9,10 +10,6 @@ const Recipes = db.define('recipes', {
     validate: {
       notEmpty: true
     }
-  },
-  ingredientsIds: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false
   },
   instructions: {
     type: Sequelize.ARRAY(Sequelize.STRING),
@@ -27,5 +24,12 @@ const Recipes = db.define('recipes', {
     allowNull: false
   }
 })
+
+Recipes.findIngredients = async function() {
+  const recipes = await this.findAll({
+    include: [{model: Items, as: 'ingredientsIncluded'}]
+  })
+  return recipes
+}
 
 module.exports = Recipes

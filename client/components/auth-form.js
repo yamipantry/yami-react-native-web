@@ -2,32 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-
-// import {
-//   View,
-//   Image,
-//   Dimensions,
-//   Keyboard,
-//   TouchableOpacity,
-//   Text
-// } from 'react-native'
-
-// export class Login extends React.Component {
-//   renderImage = () => {
-//     const screenSize = Dimensions.get('window')
-//     const imageSize = {
-//       width: screenSize.width,
-//       height: screenSize.height - scaleModerate(375, 1)
-//     }
-//     return <Image style={[styles.image, imageSize]} />
-//   }
-
-//   render = () => (
-//     <View>
-//       <Text> View Component </Text>
-//     </View>
-//   )
-// }
+import TestForm from './formTest'
 
 /**
  * COMPONENT
@@ -56,6 +31,7 @@ const AuthForm = props => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       <a href="/auth/google">{displayName} with Google</a>
+      <TestForm />
     </div>
   )
 }

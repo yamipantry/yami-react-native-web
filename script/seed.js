@@ -1,7 +1,13 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Recipes, Ingredients, Items} = require('../server/db/models')
+const {
+  User,
+  Recipes,
+  Ingredients,
+  Items,
+  Bookmarks
+} = require('../server/db/models')
 
 //ingredient creator that returns an array of dummy ingredient names of varying lengths
 const ingredientCreator = require('./ingredientCreator')
@@ -299,6 +305,14 @@ async function seed() {
       amount: '1',
       recipeId: 4,
       ingredientName: 'beef'
+    })
+  ])
+
+  const BookmarksList = await Promise.all([
+    Bookmarks.create({
+      rank: '4',
+      recipeId: 5,
+      userId: 1
     })
   ])
 

@@ -30,7 +30,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:recipeId', async (req, res, next) => {
   try {
-    const recipe = await Recipes.findById(req.body.recipeId, {
+    const recipe = await Recipes.findById(req.params.recipeId, {
       include: [{model: Items, as: 'ingredientsIncluded'}]
     })
     res.json(recipe)

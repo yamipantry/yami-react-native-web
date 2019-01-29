@@ -5,7 +5,7 @@ module.exports = router
 
 router.put('/add', async (req, res, next) => {
   try {
-    const pantryRes = await User.findById(1)
+    const pantryRes = await User.findById(req.user.id)
     let pantry = pantryRes.pantryItems
     let ing =
       req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1)
@@ -22,7 +22,7 @@ router.put('/add', async (req, res, next) => {
           pantryItems: pantry
         },
         {
-          where: {id: 1},
+          where: {id: req.user.id},
           returning: true,
           plain: true
         }
@@ -37,7 +37,7 @@ router.put('/add', async (req, res, next) => {
 
 router.put('/delete', async (req, res, next) => {
   try {
-    const pantryRes = await User.findById(1)
+    const pantryRes = await User.findById(req.user.id)
     let pantry = pantryRes.pantryItems
     let ing =
       req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1)
@@ -49,7 +49,7 @@ router.put('/delete', async (req, res, next) => {
         pantryItems: pantryfil
       },
       {
-        where: {id: 1},
+        where: {id: req.user.id},
         returning: true,
         plain: true
       }

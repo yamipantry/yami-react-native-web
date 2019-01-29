@@ -28,4 +28,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:recipeId', async (req, res, next) => {
+  try {
+    const recipe = await Recipes.findById(req.body.recipeId, {
+      include: [{model: Items, as: 'ingredientsIncluded'}]
+    })
+    res.json(recipe)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router

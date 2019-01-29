@@ -2,32 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-
-// import {
-//   View,
-//   Image,
-//   Dimensions,
-//   Keyboard,
-//   TouchableOpacity,
-//   Text
-// } from 'react-native'
-
-// export class Login extends React.Component {
-//   renderImage = () => {
-//     const screenSize = Dimensions.get('window')
-//     const imageSize = {
-//       width: screenSize.width,
-//       height: screenSize.height - scaleModerate(375, 1)
-//     }
-//     return <Image style={[styles.image, imageSize]} />
-//   }
-
-//   render = () => (
-//     <View>
-//       <Text> View Component </Text>
-//     </View>
-//   )
-// }
+import TestForm from './formTest'
 
 /**
  * COMPONENT
@@ -39,10 +14,10 @@ const AuthForm = props => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="email">
-            <small>Email</small>
+          <label htmlFor="userName">
+            <small>Username</small>
           </label>
-          <input name="email" type="text" />
+          <input name="userName" type="text" />
         </div>
         <div>
           <label htmlFor="password">
@@ -56,6 +31,7 @@ const AuthForm = props => {
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       <a href="/auth/google">{displayName} with Google</a>
+      <TestForm />
     </div>
   )
 }
@@ -88,9 +64,9 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
-      const email = evt.target.email.value
+      const userName = evt.target.userName.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(auth(userName, password, formName))
     }
   }
 }

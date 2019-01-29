@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Ingredients} = require('../db/models')
+const Sequelize = require('sequelize')
 
 module.exports = router
 
@@ -15,6 +16,33 @@ router.get('/', async (req, res, next) => {
         attributes: ['id', 'email']
       })
       res.json(users)
+    } catch (err) {
+      next(err)
+    }
+  }
+})
+
+router.get('/testSQL', async (req, res, next) => {
+  const Op = Sequelize.Op
+  const suggestions = await Ingredients.findAll({
+    where: {
+      name: {
+        [Op.like]: req.query.name + '%'
+      }
+    },
+    limit: 5
+  })
+  res.json(suggestions)
+})
+
+router.put('/:userId', async (req, res, next) => {
+  if (!req.user && process.env.NODE_ENV !== 'test') {
+    res.status(401).send('Sorry Not Logged In')
+  } else {
+    try {
+      const user = await User.findById(req.params.userId * 1)
+      let message = await user.update(req.body)
+      res.json(message)
     } catch (err) {
       next(err)
     }

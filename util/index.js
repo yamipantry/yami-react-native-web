@@ -5,7 +5,7 @@ const intersection = (arrA, arrB) => {
   while (idxA < arrA.length && idxB < arrB.length) {
     const elemA = arrA[idxA]
     const elemB = arrB[idxB]
-    if (elemA == elemB) {
+    if (elemA === elemB) {
       shared.push(elemA)
     }
     if (elemA <= elemB) {
@@ -29,4 +29,11 @@ const hash = ingr => {
   return number
 }
 
-module.exports = {intersection, hash}
+const filtering = (recipe, pantry) => {
+  const len = recipe.filter(x => !pantry.includes(x))
+  if (len.length <= 2) {
+    return len
+  }
+}
+
+module.exports = {intersection, hash, filtering}

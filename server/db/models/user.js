@@ -12,18 +12,10 @@ const User = db.define('user', {
     }
   },
   firstName: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   lastName: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.STRING
   },
   streetName: {
     type: Sequelize.STRING
@@ -38,7 +30,8 @@ const User = db.define('user', {
     type: Sequelize.STRING
   },
   pantryItems: {
-    type: Sequelize.ARRAY(Sequelize.INTEGER)
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: []
   },
   profileImage: {
     type: Sequelize.STRING
@@ -54,6 +47,10 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    },
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {

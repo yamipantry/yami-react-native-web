@@ -36,7 +36,7 @@ router.get('/testSQL', async (req, res, next) => {
 })
 
 router.put('/:userId', async (req, res, next) => {
-  if (!req.user && process.env.NODE_ENV !== 'test') {
+  if (/*!req.user &&*/ process.env.NODE_ENV !== 'test') {
     res.status(401).send('Sorry Not Logged In')
   } else {
     try {

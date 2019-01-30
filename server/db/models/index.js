@@ -1,6 +1,7 @@
 const User = require('./user')
 const Ingredients = require('./ingredients')
 const Recipes = require('./recipes')
+const db = require('../db')
 const Items = require('./ingredientList')
 const Bookmarks = require('./bookmarks')
 
@@ -28,10 +29,13 @@ Recipes.belongsToMany(User, {through: Bookmarks})
 
 User.belongsToMany(User, {as: 'friends', through: 'userfriends'})
 
+const Userfriends = db.model('userfriends')
+
 module.exports = {
   User,
   Ingredients,
   Recipes,
+  Userfriends,
   Items,
   Bookmarks
 }

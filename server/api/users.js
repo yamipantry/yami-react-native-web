@@ -35,15 +35,16 @@ router.get('/testSQL', async (req, res, next) => {
   res.json(suggestions)
 })
 router.put('/:userId', async (req, res, next) => {
-  if (!req.user && process.env.NODE_ENV !== 'test') {
-    res.status(401).send('Sorry Not Logged In')
-  } else {
-    try {
-      const user = await User.findById(req.params.userId * 1)
-      let message = await user.update(req.body)
-      res.json(message)
-    } catch (err) {
-      next(err)
-    }
+  // if (/*!req.user &&*/ process.env.NODE_ENV !== 'test') {
+  //   res.status(401).send('Sorry Not Logged In')
+  // } else {
+  try {
+    console.log(req.body)
+    const user = await User.findById(req.params.userId * 1)
+    let message = await user.update(req.body)
+    res.json(message)
+  } catch (err) {
+    next(err)
   }
+  //}
 })

@@ -34,7 +34,6 @@ router.get('/testSQL', async (req, res, next) => {
   })
   res.json(suggestions)
 })
-
 router.put('/:userId', async (req, res, next) => {
   if (!req.user && process.env.NODE_ENV !== 'test') {
     res.status(401).send('Sorry Not Logged In')

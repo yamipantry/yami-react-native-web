@@ -12,14 +12,6 @@ router.post('/login', async (req, res, next) => {
       console.log('Incorrect password for user:', req.body.userName)
       res.status(401).send('Wrong username and/or password')
     } else {
-      // const pantryNames = await Ingredients.findAll({
-      //   where: {
-      //     id: user.pantryItems
-      //   },
-      //   // attributes: ['id', 'name']
-      // })
-      // user.dataValues.pantryNames = pantryNames
-      // console.log(pantryNames)
       req.login(user, err => (err ? next(err) : res.json(user)))
     }
   } catch (err) {

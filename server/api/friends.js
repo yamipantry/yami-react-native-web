@@ -5,7 +5,7 @@ module.exports = router
 
 //GET /api/friends
 
-app.get('/', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const friends = await User.findAll({
       include: [

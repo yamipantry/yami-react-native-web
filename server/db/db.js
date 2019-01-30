@@ -16,7 +16,8 @@ const db = new Sequelize(
   process.env.POSTGRES_PASSWORD,
   {
     host: '75.128.12.8',
-    dialect: 'postgres'
+    dialect: 'postgres',
+    logging: false
   }
 )
 module.exports = db

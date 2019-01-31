@@ -94,6 +94,45 @@ User.encryptPassword = function(plainText, salt) {
     .digest('hex')
 }
 
+User.modifyIngredients = async function(id, ingredient, method) {
+  //finds user by id
+  // const pantryRes = await User.findById(req.user.id)
+  //finds users pantry
+  // let pantry = pantryRes.pantryItems
+
+  //req.body === 'coffee'
+  let {pantryItems} = await this.findById(id, {
+    attributes: ['pantryItems']
+  })
+  //capitalizes first letter
+  let ing = ingredient.charAt(0).toUpperCase() + ingredient.slice(1)
+  // 'Coffee' if pantryItems includes 'Coffee'
+  if (method === 'add') {
+    if (pantryItems.includes(ing) || pantryItems.includes(`${ing}s`)) {
+      return `You already have ${ing} in your pantry.`
+    } else {
+      pantryItems.push(ing)
+    }
+  } else if (method === 'delete') {
+    pantryItems = [
+      ...pantryItems.filter(function(value) {
+        return value !== ingredients
+      })
+    ]
+  }
+  await this.update(
+    {
+      pantryItems: pantryItems
+    },
+    {
+      where: {id: id},
+      returning: true,
+      plain: true
+    }
+  )
+  return `Updated`
+}
+
 /**
  * hooks
  */

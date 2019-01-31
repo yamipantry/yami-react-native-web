@@ -3,26 +3,10 @@ const {Recipes, User, Items, Ingredients} = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
-    const userPantry = await User.findById(req.user.id, {
-      attributes: ['pantryItems']
-    })
-    const recipes = await Recipes.findIngredients()
-    let result = []
-    let ingredientsArr = []
-    const pantry = userPantry.dataValues.pantryItems
-    const recipeToAdd = recipes
-    for (let i = 0; i < recipeToAdd.length; i++) {
-      let len = recipeToAdd[i].ingredientsIncluded.filter(
-        x => !pantry.includes(x.ingredientName)
-      )
-      if (len.length <= 2) {
-        ingredientsArr.push(len)
-        result.push(recipeToAdd[i])
-      }
-    }
-    const obj = {result, ingredientsArr}
-
-    res.json(obj)
+    const recipes = await Recipes.findMatchingRecipesWithIngredients(
+      req.user.id
+    )
+    res.json(recipes)
   } catch (err) {
     next(err)
   }

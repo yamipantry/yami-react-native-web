@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
   } else {
     try {
       const users = await User.findAll({
-        // explicitly select only the id, email attributes
+        // explicitly select only the id and  email items.
         attributes: ['id', 'email']
       })
       res.json(users)
@@ -36,9 +36,6 @@ router.get('/', async (req, res, next) => {
 // })
 
 router.put('/:userId', async (req, res, next) => {
-  // if (/*!req.user &&*/ process.env.NODE_ENV !== 'test') {
-  //   res.status(401).send('Sorry Not Logged In')
-  // } else {
   try {
     const user = await User.findById(req.params.userId * 1)
     let message = await user.update(req.body)
@@ -46,5 +43,18 @@ router.put('/:userId', async (req, res, next) => {
   } catch (err) {
     next(err)
   }
-  //}
+})
+
+//POST /api/users/:userId/bookmarks
+router.post('/:userId/bookmarks', async (req, res, next) => {
+  try {
+    const bookmark = await Bookmarks.create({
+      rank: req.body.rank,
+      userId: req.params.userId,
+      recipeId: req.body.recipeId
+    })
+    res.status(201).json(bookmark)
+  } catch (error) {
+    next(error)
+  }
 })

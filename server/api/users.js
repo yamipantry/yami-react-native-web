@@ -22,6 +22,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// OB/MS: dead code
 router.get('/testSQL', async (req, res, next) => {
   const Op = Sequelize.Op
   const suggestions = await Ingredients.findAll({
@@ -40,6 +41,7 @@ router.put('/:userId', async (req, res, next) => {
   //   res.status(401).send('Sorry Not Logged In')
   // } else {
   try {
+    // OB/MS: unnecessary logs
     console.log(req.body)
     const user = await User.findById(req.params.userId * 1)
     let message = await user.update(req.body)

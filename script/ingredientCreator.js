@@ -1,3 +1,5 @@
+// OB/MS: there's a library called "chance.js" for generating random stuff
+
 function randomInt(maximum) {
   return Math.floor(Math.random() * Math.floor(maximum))
 }

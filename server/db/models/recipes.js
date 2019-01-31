@@ -25,6 +25,7 @@ const Recipes = db.define('recipes', {
   }
 })
 
+// OB/MS: could just return the promise and ditch `async..await`
 Recipes.findIngredients = async function() {
   const recipes = await this.findAll({
     include: [{model: Items, as: 'ingredientsIncluded'}]

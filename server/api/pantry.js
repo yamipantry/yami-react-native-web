@@ -3,6 +3,7 @@ const {User} = require('../db/models')
 
 module.exports = router
 
+// OB/MS: in RESTful conventions "add" / "create" / "delete" should not appear in the URL, the URL identifies the resource, the VERB identifies the necessary action
 router.put('/add', async (req, res, next) => {
   try {
     const pantryRes = await User.findById(req.user.id)
@@ -35,8 +36,10 @@ router.put('/add', async (req, res, next) => {
   }
 })
 
+// OB/MS: if you change to DELETE route (instead of PUT) you can't use the request body anymore
 router.put('/delete', async (req, res, next) => {
   try {
+    // OB/MS: could also be a function
     const pantryRes = await User.findById(req.user.id)
     let pantry = pantryRes.pantryItems
     let ing =

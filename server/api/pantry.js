@@ -3,59 +3,41 @@ const {User} = require('../db/models')
 
 module.exports = router
 
-router.put('/add', async (req, res, next) => {
-  try {
-    const pantryRes = await User.findById(req.user.id)
-    let pantry = pantryRes.pantryItems
-    let ing =
-      req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1)
-    if (pantry.includes(req.body.ingredient) === true) {
-      if (ing.endsWith('s') !== true) {
-        res.send(`${ing} already exists in your pantry.`)
-      } else {
-        res.send(`${ing} already exist in your pantry.`)
-      }
-    } else {
-      pantry.push(req.body.ingredient)
-      await User.update(
-        {
-          pantryItems: pantry
-        },
-        {
-          where: {id: req.user.id},
-          returning: true,
-          plain: true
-        }
-      )
+//  /api/pantry
 
-      res.send(`Added '${ing}' to your pantry.`)
-    }
+router.put('/', async (req, res, next) => {
+  try {
+    const added = await User.modifyIngredients(req.user.id, req.body, 'add')
+    res.json(added)
   } catch (err) {
     next(err)
   }
 })
 
-router.put('/delete', async (req, res, next) => {
+router.put('/', async (req, res, next) => {
   try {
-    const pantryRes = await User.findById(req.user.id)
-    let pantry = pantryRes.pantryItems
-    let ing =
-      req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1)
-    let pantryfil = pantry.filter(function(value) {
-      return value !== req.body.ingredient
-    })
-    await User.update(
-      {
-        pantryItems: pantryfil
-      },
-      {
-        where: {id: req.user.id},
-        returning: true,
-        plain: true
-      }
+    const deleted = await User.modifyIngredients(
+      req.user.id,
+      req.body,
+      'delete'
     )
+    res.json(deleted)
 
-    res.send(`Removed '${ing}' from your pantry.`)
+    // const pantryRes = await User.findById(req.user.id)
+    // let pantry = pantryRes.pantryItems
+    // let ing =
+    //   req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1)
+
+    // await User.update(
+    //   {
+    //     pantryItems: pantryfil
+    //   },
+    //   {
+    //     where: {id: req.user.id},
+    //     returning: true,
+    //     plain: true
+    //   }
+    // )
   } catch (err) {
     next(err)
   }

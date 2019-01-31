@@ -9,6 +9,17 @@ const db = new Sequelize(
     logging: false
   }
 )
+
+// const db = new Sequelize(
+//   'yami',
+//   process.env.POSTGRES_USER,
+//   process.env.POSTGRES_PASSWORD,
+//   {
+//     host: '75.128.12.8',
+//     dialect: 'postgres',
+//     logging: false
+//   }
+// )
 module.exports = db
 
 // This is a global Mocha hook used for resource cleanup.

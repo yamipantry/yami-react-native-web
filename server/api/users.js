@@ -22,18 +22,18 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/testSQL', async (req, res, next) => {
-  const Op = Sequelize.Op
-  const suggestions = await Ingredients.findAll({
-    where: {
-      name: {
-        [Op.like]: req.query.name + '%'
-      }
-    },
-    limit: 5
-  })
-  res.json(suggestions)
-})
+// router.get('/testSQL', async (req, res, next) => {
+//   const Op = Sequelize.Op
+//   const suggestions = await Ingredients.findAll({
+//     where: {
+//       name: {
+//         [Op.like]: req.query.name + '%'
+//       }
+//     },
+//     limit: 5
+//   })
+//   res.json(suggestions)
+// })
 
 router.put('/:userId', async (req, res, next) => {
   try {

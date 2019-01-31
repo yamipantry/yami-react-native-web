@@ -1,10 +1,11 @@
 const router = require('express').Router()
 const {Bookmarks} = require('../db/models')
 
-router.post('/bookmarks', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
+    const ranking = req.body.rank + ''
     const bookmark = await Bookmarks.create({
-      rank: rq.body.rank,
+      rank: ranking,
       userId: req.user.id,
       recipeId: req.body.recipeId
     })

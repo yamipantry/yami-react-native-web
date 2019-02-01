@@ -5,39 +5,14 @@ module.exports = router
 
 //  /api/pantry
 
-router.put('/', async (req, res, next) => {
+router.put('/:method', async (req, res, next) => {
   try {
-    const added = await User.modifyIngredients(req.user.id, req.body, 'add')
-    res.json(added)
-  } catch (err) {
-    next(err)
-  }
-})
-
-router.put('/', async (req, res, next) => {
-  try {
-    const deleted = await User.modifyIngredients(
+    const updated = await User.modifyIngredients(
       req.user.id,
-      req.body,
-      'delete'
+      req.body.item,
+      req.params.method
     )
-    res.json(deleted)
-
-    // const pantryRes = await User.findById(req.user.id)
-    // let pantry = pantryRes.pantryItems
-    // let ing =
-    //   req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1)
-
-    // await User.update(
-    //   {
-    //     pantryItems: pantryfil
-    //   },
-    //   {
-    //     where: {id: req.user.id},
-    //     returning: true,
-    //     plain: true
-    //   }
-    // )
+    res.json(updated[1])
   } catch (err) {
     next(err)
   }

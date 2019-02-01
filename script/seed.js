@@ -27,7 +27,7 @@ async function seed() {
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
-      pantryItems: ['butternut squash', 'chicken', 'beef', 'celery'],
+      pantryItems: ['Butternut squash', 'Chicken', 'Beef', 'Celery'],
       profileImage: '/pic.jpeg'
     }),
     User.create({
@@ -40,7 +40,7 @@ async function seed() {
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
-      pantryItems: ['lettuce', 'butternut squash', 'love', 'flour'],
+      pantryItems: ['Lettuce', 'Butternut squash', 'Love', 'Flour'],
       profileImage: '/pic.jpeg'
     }),
     User.create({
@@ -53,7 +53,7 @@ async function seed() {
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
-      pantryItems: ['beans', 'butternut squash', 'lettuce', 'celery'],
+      pantryItems: ['Beans', 'Butternut squash', 'Lettuce', 'Celery'],
       profileImage: '/pic.jpeg'
     }),
     User.create({
@@ -67,12 +67,12 @@ async function seed() {
       state: 'ca',
       zip: '93401',
       pantryItems: [
-        'sugar',
-        'rabbit',
-        'carrots',
-        'beans',
-        'butternut squash',
-        'tomato'
+        'Sugar',
+        'Rabbit',
+        'Carrots',
+        'Ceans',
+        'Butternut squash',
+        'Tomato'
       ],
       profileImage: '/pic.jpeg'
     })
@@ -80,43 +80,43 @@ async function seed() {
 
   let ingredients = await Promise.all([
     Ingredients.create({
-      name: 'carrots'
+      name: 'Carrots'
     }),
     Ingredients.create({
-      name: 'beans'
+      name: 'Beans'
     }),
     Ingredients.create({
-      name: 'butternut squash'
+      name: 'Butternut squash'
     }),
     Ingredients.create({
-      name: 'lettuce'
+      name: 'Lettuce'
     }),
     Ingredients.create({
-      name: 'beef'
+      name: 'Beef'
     }),
     Ingredients.create({
-      name: 'chicken'
+      name: 'Chicken'
     }),
     Ingredients.create({
-      name: 'sugar'
+      name: 'Sugar'
     }),
     Ingredients.create({
-      name: 'rabbit'
+      name: 'Rabbit'
     }),
     Ingredients.create({
-      name: 'tomato'
+      name: 'Tomato'
     }),
     Ingredients.create({
-      name: 'celery'
+      name: 'Celery'
     }),
     Ingredients.create({
-      name: 'love'
+      name: 'Love'
     }),
     Ingredients.create({
-      name: 'pepperoni'
+      name: 'Pepperoni'
     }),
     Ingredients.create({
-      name: 'flour'
+      name: 'Flour'
     })
   ])
 
@@ -189,122 +189,122 @@ async function seed() {
     Items.create({
       amount: '2 cups',
       recipeId: 1,
-      ingredientName: 'beans'
+      ingredientName: 'Beans'
     }),
     Items.create({
       amount: '1 cups',
       recipeId: 1,
-      ingredientName: 'butternut squash'
+      ingredientName: 'Butternut squash'
     }),
     Items.create({
       amount: '5 cups',
       recipeId: 1,
-      ingredientName: 'lettuce'
+      ingredientName: 'Lettuce'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 1,
-      ingredientName: 'celery'
+      ingredientName: 'Celery'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 2,
-      ingredientName: 'lettuce'
+      ingredientName: 'Lettuce'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 2,
-      ingredientName: 'butternut squash'
+      ingredientName: 'Butternut squash'
     }),
     Items.create({
       amount: '1 cups',
       recipeId: 2,
-      ingredientName: 'love'
+      ingredientName: 'Love'
     }),
     Items.create({
       amount: '5 cups',
       recipeId: 2,
-      ingredientName: 'flour'
+      ingredientName: 'Flour'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 3,
-      ingredientName: 'sugar'
+      ingredientName: 'Sugar'
     }),
     Items.create({
       amount: '1',
       recipeId: 3,
-      ingredientName: 'rabbit'
+      ingredientName: 'Rabbit'
     }),
     Items.create({
       amount: '1 cups',
       recipeId: 3,
-      ingredientName: 'carrots'
+      ingredientName: 'Carrots'
     }),
     Items.create({
       amount: '1',
       recipeId: 3,
-      ingredientName: 'beans'
+      ingredientName: 'Beans'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 3,
-      ingredientName: 'butternut squash'
+      ingredientName: 'Butternut squash'
     }),
     Items.create({
       amount: '1',
       recipeId: 3,
-      ingredientName: 'tomato'
+      ingredientName: 'Tomato'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 5,
-      ingredientName: 'sugar'
+      ingredientName: 'Sugar'
     }),
     Items.create({
       amount: '1',
       recipeId: 5,
-      ingredientName: 'rabbit'
+      ingredientName: 'Rabbit'
     }),
     Items.create({
       amount: '1 cups',
       recipeId: 5,
-      ingredientName: 'carrots'
+      ingredientName: 'Carrots'
     }),
     Items.create({
       amount: '1',
       recipeId: 5,
-      ingredientName: 'beans'
+      ingredientName: 'Beans'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 5,
-      ingredientName: 'butternut squash'
+      ingredientName: 'Butternut squash'
     }),
     Items.create({
       amount: '1',
       recipeId: 5,
-      ingredientName: 'tomato'
+      ingredientName: 'Tomato'
     }),
     Items.create({
       amount: '1 cups',
       recipeId: 4,
-      ingredientName: 'butternut squash'
+      ingredientName: 'Butternut squash'
     }),
     Items.create({
       amount: '1',
       recipeId: 4,
-      ingredientName: 'chicken'
+      ingredientName: 'Chicken'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 4,
-      ingredientName: 'celery'
+      ingredientName: 'Celery'
     }),
     Items.create({
       amount: '1',
       recipeId: 4,
-      ingredientName: 'beef'
+      ingredientName: 'Beef'
     })
   ])
 

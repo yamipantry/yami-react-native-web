@@ -105,22 +105,22 @@ User.modifyIngredients = async function(id, ingredient, method) {
     attributes: ['pantryItems']
   })
   //capitalizes first letter
-  let ing = ingredient.charAt(0).toUpperCase() + ingredient.slice(1)
   // 'Coffee' if pantryItems includes 'Coffee'
   if (method === 'add') {
+    let ing = ingredient.charAt(0).toUpperCase() + ingredient.slice(1)
     if (pantryItems.includes(ing) || pantryItems.includes(`${ing}s`)) {
       return `You already have ${ing} in your pantry.`
     } else {
       pantryItems.push(ing)
     }
-  } else if (method === 'delete') {
+  } else if (method === 'deleted') {
     pantryItems = [
       ...pantryItems.filter(function(value) {
-        return value !== ingredients
+        return value !== ingredient
       })
     ]
   }
-  await this.update(
+  const updated = await this.update(
     {
       pantryItems: pantryItems
     },
@@ -130,7 +130,7 @@ User.modifyIngredients = async function(id, ingredient, method) {
       plain: true
     }
   )
-  return `Updated`
+  return updated
 }
 
 /**

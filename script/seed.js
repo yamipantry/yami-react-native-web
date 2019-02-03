@@ -312,7 +312,7 @@ async function seed() {
     Bookmarks.create({
       rank: '4',
       recipeId: 5,
-      userId: 1
+      userId: 3
     })
   ])
 

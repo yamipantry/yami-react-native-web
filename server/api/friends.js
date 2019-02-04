@@ -9,7 +9,11 @@ router.get('/', async (req, res, next) => {
   try {
     const friends = await User.findAll({
       include: [
-        {model: User, as: 'friends', attributes: ['userName', 'pantryItems']}
+        {
+          model: User,
+          as: 'friends',
+          attributes: ['userName', 'pantryItems', 'profileImage']
+        }
       ],
       where: {
         id: req.user.id

@@ -48,7 +48,7 @@ router.post('/', async (req, res, next) => {
     const foundId = findFriend.id
     const friend = await Userfriends.findOrCreate({
       where: {
-        userId: req.user.id,
+        userId: 1,
         friendId: foundId
       }
     })

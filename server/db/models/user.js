@@ -109,9 +109,9 @@ User.modifyIngredients = async function(id, ingredient, method) {
   if (method === 'add') {
     let ing = ingredient.charAt(0).toUpperCase() + ingredient.slice(1)
     if (pantryItems.includes(ing) || pantryItems.includes(`${ing}s`)) {
-      return `You already have ${ing} in your pantry.`
+      pantryItems = [...pantryItems]
     } else {
-      pantryItems.push(ing)
+      pantryItems = [...pantryItems, ing]
     }
   } else if (method === 'deleted') {
     pantryItems = [

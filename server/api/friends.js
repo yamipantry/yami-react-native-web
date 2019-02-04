@@ -57,3 +57,23 @@ router.post('/', async (req, res, next) => {
     next(error)
   }
 })
+
+// DELETE api/friends
+// Delete a friend
+
+router.delete('/', async (req, res, next) => {
+  try {
+    await Userfriends.destroy({
+      where: {
+        userId: req.user.id,
+        friendId: req.body.id
+      }
+    })
+    res
+      .status(200)
+      .send('Friend removed.')
+      .end()
+  } catch (err) {
+    next(err)
+  }
+})

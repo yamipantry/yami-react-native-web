@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
         {
           model: User,
           as: 'friends',
-          attributes: ['userName', 'pantryItems', 'profileImage']
+          attributes: ['userName', 'pantryItems', 'profileImage', 'id']
         }
       ],
       where: {

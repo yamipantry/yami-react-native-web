@@ -6,7 +6,8 @@ const {
   Recipes,
   Ingredients,
   Items,
-  Bookmarks
+  Bookmarks,
+  Userfriends
 } = require('../server/db/models')
 
 //ingredient creator that returns an array of dummy ingredient names of varying lengths
@@ -313,6 +314,17 @@ async function seed() {
       rank: '4',
       recipeId: 5,
       userId: 1
+    })
+  ])
+
+  const FriendsList = await Promise.all([
+    Userfriends.create({
+      friendId: 1,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 2,
+      userId: 3
     })
   ])
 

@@ -8,20 +8,28 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const friends = await User.findAll({
+    const response = await User.findAll({
+      where: {
+        id: req.user.id
+      },
       include: [
         {
           model: User,
           as: 'friends',
-          attributes: ['userName', 'pantryItems', 'profileImage', 'id']
+          attributes: [
+            'userName',
+            'pantryItems',
+            'profileImage',
+            'id',
+            'firstName',
+            'lastName'
+          ]
         }
       ],
-      where: {
-        id: req.user.id
-      }
+      plain: true
     })
 
-    res.json(friends)
+    res.json(response.friends)
   } catch (err) {
     next(err)
   }

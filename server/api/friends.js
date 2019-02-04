@@ -47,10 +47,12 @@ router.post('/', async (req, res, next) => {
     })
     const foundId = findFriend.id
     const friend = await Userfriends.findOrCreate({
-      userId: req.user.id,
-      friendId: foundId
+      where: {
+        userId: req.user.id,
+        friendId: foundId
+      }
     })
-    res.status(201).json(friend)
+    res.status(201).json(friend[0])
   } catch (error) {
     next(error)
   }

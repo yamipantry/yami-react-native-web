@@ -9,13 +9,14 @@ const {
   Bookmarks
 } = require('../server/db/models')
 
+const unirestIngredients = require('./ingredientsObtainer')
+
 //ingredient creator that returns an array of dummy ingredient names of varying lengths
-const ingredientCreator = require('./ingredientCreator')
+//const ingredientCreator = require('./ingredientCreator')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
-
   const users = await Promise.all([
     User.create({
       userName: 'CodyBadA$$',
@@ -120,19 +121,36 @@ async function seed() {
     })
   ])
 
-  //Here we create a big array of dummy ingredient names.  We create additional ingredient table rows using them.
-  const dummyIngredientNames = ingredientCreator() //array of names
+  // Here we create a big array of dummy ingredient names.  We create additional ingredient table rows using them.
+  // const dummyIngredientNames = ingredientCreator() //array of names
 
-  dummyIngredientNames.forEach(async element => {
+  // dummyIngredientNames.forEach(async element => {
+  //   try {
+  //     const newIngredient = await Ingredients.create({
+  //       name: element
+  //     })
+
+  //     ingredients.push(newIngredient) //ingredients array above is updated
+  //   } catch (err) {
+  //     console.log(
+  //       `For some reason (validation?), the ingredient called ${element} could not be added to the table.`
+  //     )
+  //   }
+  // })
+
+  unirestIngredients.forEach(async element => {
     try {
       const newIngredient = await Ingredients.create({
         name: element
       })
 
       ingredients.push(newIngredient) //ingredients array above is updated
+      console.log(
+        `The ingredient called ${element} was added to the 'Ingredients' table.`
+      )
     } catch (err) {
       console.log(
-        `For some reason (validation?), the ingredient called ${element} could not be added to the table.`
+        `For some reason, the ingredient called ${element} could not be added to the 'Ingredients' table.`
       )
     }
   })

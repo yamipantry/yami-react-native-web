@@ -32,8 +32,10 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const findFriend = await User.findAll({
-      where: Sequelize.or({userName: req.body}, {email: req.body})
+    const findFriend = await User.findOne({
+      where: Sequelize.or({userName: req.body.input}, {email: req.body.input}),
+      attributes: ['id'],
+      raw: true
     })
     const foundId = findFriend.id
     const friend = await Userfriends.create({

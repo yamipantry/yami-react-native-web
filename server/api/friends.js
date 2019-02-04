@@ -46,7 +46,7 @@ router.post('/', async (req, res, next) => {
       raw: true
     })
     const foundId = findFriend.id
-    const friend = await Userfriends.create({
+    const friend = await Userfriends.findOrCreate({
       userId: req.user.id,
       friendId: foundId
     })

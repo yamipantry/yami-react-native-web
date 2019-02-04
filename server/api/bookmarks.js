@@ -17,7 +17,7 @@ router.put('/', async (req, res, next) => {
         plain: true
       }
     )
-    console.log(updated)
+    
     res.json(updated[1])
   } catch (err) {
     next(err)

@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Userfriends} = require('../db/models')
+const Sequelize = require('Sequelize')
 
 module.exports = router
 
@@ -7,33 +8,51 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const friends = await User.findAll({
-      include: [
-        {model: User, as: 'friends', attributes: ['userName', 'pantryItems']}
-      ],
+    const response = await User.findAll({
       where: {
         id: req.user.id
-      }
+      },
+      include: [
+        {
+          model: User,
+          as: 'friends',
+          attributes: [
+            'userName',
+            'pantryItems',
+            'profileImage',
+            'id',
+            'firstName',
+            'lastName'
+          ]
+        }
+      ],
+      plain: true
     })
 
-    res.json(friends)
+    res.json(response.friends)
   } catch (err) {
     next(err)
   }
 })
 
 // POST api/friends
-// We assume req.body contains an Id of a friend to add. E.g., {friendId:17}
+// Assumes friends will be added by username or email
 
 router.post('/', async (req, res, next) => {
   try {
-    const friend = await User.create(req.body, {
-      include: [{model: User, as: 'friends', attributes: ['userName']}],
+    const findFriend = await User.findOne({
+      where: Sequelize.or({userName: req.body.input}, {email: req.body.input}),
+      attributes: ['id'],
+      raw: true
+    })
+    const foundId = findFriend.id
+    const friend = await Userfriends.findOrCreate({
       where: {
-        id: req.user.id
+        userId: req.user.id,
+        friendId: foundId
       }
     })
-    res.status(201).json(friend)
+    res.status(201).json(friend[0])
   } catch (error) {
     next(error)
   }

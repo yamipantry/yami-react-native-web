@@ -25,6 +25,7 @@ Recipes.hasMany(Items, {as: 'ingredientsIncluded'})
 Recipes.belongsToMany(Ingredients, {through: Items})
 Ingredients.belongsToMany(Recipes, {through: Items})
 User.belongsToMany(Recipes, {through: Bookmarks})
+Bookmarks.belongsTo(Recipes)
 Recipes.belongsToMany(User, {through: Bookmarks})
 
 User.belongsToMany(User, {as: 'friends', through: 'userfriends'})

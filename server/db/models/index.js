@@ -4,6 +4,7 @@ const Recipes = require('./recipes')
 const db = require('../db')
 const Items = require('./ingredientList')
 const Bookmarks = require('./bookmarks')
+const yamiDinners = require('./yamiDinners')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -27,8 +28,9 @@ Ingredients.belongsToMany(Recipes, {through: Items})
 User.belongsToMany(Recipes, {through: Bookmarks})
 Bookmarks.belongsTo(Recipes)
 Recipes.belongsToMany(User, {through: Bookmarks})
-
 User.belongsToMany(User, {as: 'friends', through: 'userfriends'})
+yamiDinners.belongsTo(User)
+User.hasOne(yamiDinners)
 
 const Userfriends = db.model('userfriends')
 
@@ -38,5 +40,6 @@ module.exports = {
   Recipes,
   Userfriends,
   Items,
-  Bookmarks
+  Bookmarks,
+  yamiDinners
 }

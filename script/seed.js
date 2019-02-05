@@ -6,7 +6,8 @@ const {
   Recipes,
   Ingredients,
   Items,
-  Bookmarks
+  Bookmarks,
+  Userfriends
 } = require('../server/db/models')
 
 const {
@@ -337,7 +338,18 @@ async function seed() {
     Bookmarks.create({
       rank: '4',
       recipeId: 5,
-      userId: 1
+      userId: 3
+    })
+  ])
+
+  const FriendsList = await Promise.all([
+    Userfriends.create({
+      friendId: 1,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 2,
+      userId: 3
     })
   ])
 

@@ -1,94 +1,7 @@
 //An ingredients API that supplies recipe, ingredients, etc. information
-// const unirest = require('unirest')
+//const unirest = require('unirest')
 
 /////////////////////////////////Ingredients//////////////////////////////////////
-// unirest
-//   .get(
-//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/autocomplete?number=50&query=orange'
-//   )
-//   .header(
-//     'X-RapidAPI-Key',
-//     '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
-//   )
-//   .end(function(result) {
-//     // Useful members are result.status, result.headers, and result.body
-
-//     console.log(result.status, result.headers)
-//     const ingredientsObjectsArray = result.body
-//     let ingredients = []
-
-//     ingredientsObjectsArray.forEach(element =>
-//       ingredients.push(element['name'])
-//     )
-//     console.log(ingredients)
-//   })
-
-////////////////////////////////////////////
-//   unirest
-//     .get(
-//       'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/autocomplete?number=50&query=carro'
-//     )
-//     .header(
-//       'X-RapidAPI-Key',
-//       '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
-//     )
-//     .end(async function(result) {
-//       // Useful members are result.status, result.headers, and result.body
-
-//       const ingredientsObjectsArray = result.body
-//       let ingredients = []
-
-//       ingredientsObjectsArray.forEach(element =>
-//         ingredients.push(element['name'])
-//       )
-
-//       const ingredientsPromises = ingredients.map(element => {
-//         Ingredients.create({
-//           name: element
-//         })
-//       })
-
-//       await Promise.all(ingredientsPromises)
-//     })
-
-//////////////////////////////////////////////////
-// unirest
-//   .get(
-//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/autocomplete?number=50&query=carro'
-//   )
-//   .header(
-//     'X-RapidAPI-Key',
-//     '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
-//   )
-//   .end(async function(result) {
-//     // Useful members are result.status, result.headers, and result.body
-
-//     const ingredientsObjectsArray = result.body
-//     let ingredients = []
-
-//     ingredientsObjectsArray.forEach(element =>
-//       ingredients.push(element['name'])
-//     )
-
-//     await db.sync({force: true})
-//     console.log('db synced!')
-
-//     ingredients.forEach(async element => {
-//       try {
-//         await Ingredients.create({
-//           name: element
-//         })
-//       } catch (err) {
-//         console.log(
-//           `For some reason, the ingredient called ${element} could not be added to the 'Ingredients' table.`
-//         )
-//       }
-//     })
-
-//     console.log('closing db connection')
-//     await db.close()
-//     console.log('db connection closed')
-//   })
 
 let unirestIngredients = [
   'apple',
@@ -1224,19 +1137,6 @@ const unirestIngredientsSet = new Set(unirestIngredients)
 unirestIngredients = [...unirestIngredientsSet]
 
 //////////////////////////////////////////Recipes////////////////////////////////////////////////
-//const unirest = require('unirest')
-
-// unirest
-//   .get(
-//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ingredients=beef%2C+onions%2C+carrots%2C+broth'
-//   )
-//   .header(
-//     'X-RapidAPI-Key',
-//     '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
-//   )
-//   .end(function(result) {
-//     console.log(result.status, result.headers, result.body)
-//   })
 
 let unirestRecipeIDObjects = [
   {
@@ -1331,134 +1231,8 @@ let unirestRecipeIDObjects = [
   }
 ]
 
-// unirest
-//   .get(
-//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/199412/information'
-//   )
-//   .header(
-//     'X-RapidAPI-Key',
-//     '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
-//   )
-//   .end(function(result) {
-//     console.log(result.status, result.headers, result.body)
-//   })
-
 let unirestRecipeDetails = [
   {
-    vegetarian: false,
-    vegan: false,
-    glutenFree: true,
-    dairyFree: true,
-    veryHealthy: false,
-    cheap: false,
-    veryPopular: false,
-    sustainable: false,
-    weightWatcherSmartPoints: 13,
-    gaps: 'no',
-    lowFodmap: false,
-    ketogenic: false,
-    whole30: true,
-    sourceUrl: 'http://www.epicurious.com/recipes/food/views/51224220',
-    spoonacularSourceUrl:
-      'https://spoonacular.com/irish-channel-corned-beef-and-cabbage-199412',
-    aggregateLikes: 0,
-    spoonacularScore: 76,
-    healthScore: 47,
-    creditText: 'Epicurious',
-    sourceName: 'Epicurious',
-    pricePerServing: 403.93,
-    extendedIngredients: [
-      {
-        id: 11109,
-        aisle: 'Produce',
-        image: 'cabbage.jpg',
-        consitency: 'solid',
-        name: 'cabbage',
-        original: '1 head cabbage, broken apart',
-        originalString: '1 head cabbage, broken apart',
-        originalName: 'cabbage, broken apart',
-        amount: 1,
-        unit: 'head',
-        meta: [],
-        metaInformation: [],
-        measures: [Object]
-      },
-      {
-        id: 11124,
-        aisle: 'Produce',
-        image: 'sliced-carrot.png',
-        consitency: 'solid',
-        name: 'carrots',
-        original: '4 carrots, chopped',
-        originalString: '4 carrots, chopped',
-        originalName: 'carrots, chopped',
-        amount: 4,
-        unit: '',
-        meta: [Array],
-        metaInformation: [Array],
-        measures: [Object]
-      },
-      {
-        id: 6194,
-        aisle: 'Canned and Jarred',
-        image: 'chicken-broth.png',
-        consitency: 'liquid',
-        name: 'chicken broth',
-        original: '1 14-oz. can chicken broth',
-        originalString: '1 14-oz. can chicken broth',
-        originalName: 'chicken broth',
-        amount: 14,
-        unit: 'oz',
-        meta: [Array],
-        metaInformation: [Array],
-        measures: [Object]
-      },
-      {
-        id: 13346,
-        aisle: 'Meat',
-        image: 'corned-beef.png',
-        consitency: 'solid',
-        name: 'corned beef',
-        original: '3 pounds corned beef',
-        originalString: '3 pounds corned beef',
-        originalName: 'corned beef',
-        amount: 3,
-        unit: 'pounds',
-        meta: [],
-        metaInformation: [],
-        measures: [Object]
-      },
-      {
-        id: 11282,
-        aisle: 'Produce',
-        image: 'brown-onion.png',
-        consitency: 'solid',
-        name: 'onion',
-        original: '1 onion, chopped',
-        originalString: '1 onion, chopped',
-        originalName: 'onion, chopped',
-        amount: 1,
-        unit: '',
-        meta: [Array],
-        metaInformation: [Array],
-        measures: [Object]
-      },
-      {
-        id: 14412,
-        aisle: 'Beverages',
-        image: 'water.png',
-        consitency: 'liquid',
-        name: 'water',
-        original: '1 1/2 cups water',
-        originalString: '1 1/2 cups water',
-        originalName: 'water',
-        amount: 1.5,
-        unit: 'cups',
-        meta: [],
-        metaInformation: [],
-        measures: [Object]
-      }
-    ],
     id: 199412,
     title: 'Irish Channel Corned Beef and Cabbage',
     readyInMinutes: 45,
@@ -1474,6 +1248,57 @@ let unirestRecipeDetails = [
       'Rinse the corned beef and cut off excess fat.Place the onion on the bottom of the slow cooker.Place the corned beef on top of the onion.Add water, chicken broth, carrots and cabbage.Cook on low heat for 8 to 10 hours, or until meat is cooked and vegetables are tender',
     analyzedInstructions: [{name: '', steps: [Array]}],
     creditsText: 'Epicurious'
+  },
+  {
+    id: 626382,
+    title: 'Barbecue Beef Stew',
+    readyInMinutes: 75,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/626382-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: ['bbq', 'barbecu'],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['gluten free', 'dairy free'],
+    occasions: ['fall', "father's day", 'winter'],
+    winePairing: {},
+    instructions:
+      'Add the oil to a large dutch oven. Add salt and pepper to the cubed beef stew meat, then add to the dutch oven and allow the meat to sear on all sides, add in the diced onions and allow the onions to caramelize over low-heat. Add in the rest of the vegetables - carrots and red potatoes.Pour in the barbecue sauce and beef broth and allow the mixture to simmer or medium-low-heat for 1 hour or until the vegetables are tender',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Gal on a Mission'
+  },
+  {
+    id: 198235,
+    title: 'Cook the Book: Perfect Pot Roast',
+    readyInMinutes: 45,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/198235-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['gluten free', 'dairy free', 'paleolithic', 'primal', 'whole 30'],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      "Preheat the oven to 275F.  Heat a large pot or Dutch oven over medium-high heat.  Add the olive oil and let it get really hot.  While it heats, prepare the other ingredients.  Generously salt the chuck roast on both sides (I like kosher salt because it adheres more readily to the meat).  Cut a couple of onions in half from root to tip, then cut off the tops and bottoms and peel off the papery skin.  When the pot is very hot, place the onions in the oil and brown on both sides, about a minute per side.  Remove the onions to a plate.  Now, with the burner on high, deglaze the pot by adding 1 cup of the beef stock, whisking constantly.  Throw the carrots into the same (very hot) pot.  Toss them around until slightly brown, about a minute or so.  The point here is to get a nice color started on the outside of the vegetables, not to cook them.  Remove the carrots from the pot and allow the pot to get really hot again.  Add another tablespoon of oil to the pan.  Place the meat in the pot and sear it, about a minute per side.  Now, with the burner on high, deglaze the pot by adding 1 cup of the beef stock, whisking constantly.  The point of deglazing is to loosen all of the burned flavorful bits from the bottom of the pot.  When most of the bits are loosened, place the meat back in the pot.  Followed by the carrots and onions.  Pour enough beef stock into the pot to cover the meat halfway.  Next, put in the fresh rosemary and thyme sprigs.  The fresh herbs absolutely make this dish.  Tuck them into the juice to ensure that the flavors are distributed throughout the pot.  Now, just cover the pot and roast for 3 to 5 hours, depending on the size of your roast. For a 3-pound roast, allow 3 to 3 1/2 hours.  For a 5-pound roast, allow for a 4- to 5-hour cooking time.  Don't disrupt the roast during the cooking process.  When the cooking time is over, check the roast for doneness; a fork should go in easily and the meat should be very tender.  Remove the meat to a cutting board and slice against the grain",
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Serious Eats'
+  },
+  {
+    id: 218244,
+    title: 'Roast beef & carrots with easy gravy',
+    readyInMinutes: 75,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/218244-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['dairy free'],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'Heat oven to 240C/220C fan/gas 9.Mix the flour and mustard powder withsome seasoning, then rub all over the beef. Put the onion and carrots into a roasting tin and set the beef on top,then cook for 20 mins. Reduce oven to 190C/170C fan/gas 5 and continue to cook the beef for 30 minutes if you like it rare, 40 minutes for medium rare and 1 hr for well done. Remove the beef and carrots from the oven, place onto warm plates or platters and cover with foil to keep warm.Let the beef rest for 30 minutes while you turn up the oven to cook your Yorkshirepuds and finish the potatoes.For the gravy, put the tin with all the meat juices and onions back onto the hob. Stir in the flour, scraping all the stuck bits off the bottom of the tin.Cook for 30 seconds, then slowly stir in the stock, little by little. Bubble to a nice gravy, season, then serve with the beef, carved into slices, carrots and all the other trimmings',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'BBC Good Food'
   }
 ]
 

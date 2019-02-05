@@ -12,10 +12,7 @@ const {
 const {
   unirestIngredients,
   unirestRecipeDetailsFinal
-} = require('./ingredientsObtainer')
-
-//ingredient creator that returns an array of dummy ingredient names of varying lengths
-//const ingredientCreator = require('./ingredientCreator')
+} = require('./foodstuffsObtainer')
 
 async function seed() {
   await db.sync({force: true})
@@ -123,23 +120,6 @@ async function seed() {
       name: 'Flour'
     })
   ])
-
-  // Here we create a big array of dummy ingredient names.  We create additional ingredient table rows using them.
-  // const dummyIngredientNames = ingredientCreator() //array of names
-
-  // dummyIngredientNames.forEach(async element => {
-  //   try {
-  //     const newIngredient = await Ingredients.create({
-  //       name: element
-  //     })
-
-  //     ingredients.push(newIngredient) //ingredients array above is updated
-  //   } catch (err) {
-  //     console.log(
-  //       `For some reason (validation?), the ingredient called ${element} could not be added to the table.`
-  //     )
-  //   }
-  // })
 
   unirestIngredients.forEach(async element => {
     try {

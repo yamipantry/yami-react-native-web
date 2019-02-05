@@ -10,13 +10,14 @@ const {
   Userfriends
 } = require('../server/db/models')
 
-//ingredient creator that returns an array of dummy ingredient names of varying lengths
-const ingredientCreator = require('./ingredientCreator')
+const {
+  unirestIngredients,
+  unirestRecipeDetailsFinal
+} = require('./foodstuffsObtainer')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
-
   const users = await Promise.all([
     User.create({
       userName: 'CodyBadA$$',
@@ -121,24 +122,24 @@ async function seed() {
     })
   ])
 
-  //Here we create a big array of dummy ingredient names.  We create additional ingredient table rows using them.
-  const dummyIngredientNames = ingredientCreator() //array of names
-
-  dummyIngredientNames.forEach(async element => {
+  unirestIngredients.forEach(async element => {
     try {
       const newIngredient = await Ingredients.create({
         name: element
       })
 
       ingredients.push(newIngredient) //ingredients array above is updated
+      console.log(
+        `The ingredient called ${element} was added to the 'Ingredients' table.`
+      )
     } catch (err) {
       console.log(
-        `For some reason (validation?), the ingredient called ${element} could not be added to the table.`
+        `For some reason, the ingredient called ${element} could not be added to the 'Ingredients' table.`
       )
     }
   })
 
-  const recipe = await Promise.all([
+  let recipe = await Promise.all([
     Recipes.create({
       name: 'Salad Soup',
       instructions: [
@@ -185,6 +186,30 @@ async function seed() {
       imageUrl: '/rabbit.jpeg'
     })
   ])
+
+  unirestRecipeDetailsFinal.forEach(async recipeDetails => {
+    try {
+      const newRecipe = await Recipes.create({
+        name: recipeDetails.name,
+        instructions: recipeDetails.instructions,
+        description: recipeDetails.description,
+        imageUrl: recipeDetails.imageUrl
+      })
+
+      recipe.push(newRecipe) //recipe array above is updated
+      console.log(
+        `The recipe called ${
+          recipeDetails.name
+        } was added to the 'Recipes' table.`
+      )
+    } catch (err) {
+      console.log(
+        `For some reason, the recipe called ${
+          recipeDetails.name
+        } could not be added to the 'Recipes' table.`
+      )
+    }
+  })
 
   const ingredientList = await Promise.all([
     Items.create({

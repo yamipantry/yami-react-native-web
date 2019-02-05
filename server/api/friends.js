@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {User, Userfriends} = require('../db/models')
-const Sequelize = require('Sequelize')
+const Sequelize = require('sequelize')
 
 module.exports = router
 
@@ -61,12 +61,12 @@ router.post('/', async (req, res, next) => {
 // DELETE api/friends
 // Delete a friend
 
-router.delete('/', async (req, res, next) => {
+router.delete('/:Id', async (req, res, next) => {
   try {
     await Userfriends.destroy({
       where: {
         userId: req.user.id,
-        friendId: req.body.id
+        friendId: req.params.Id
       }
     })
     res

@@ -9,7 +9,10 @@ const {
   Bookmarks
 } = require('../server/db/models')
 
-const unirestIngredients = require('./ingredientsObtainer')
+const {
+  unirestIngredients,
+  unirestRecipeDetailsFinal
+} = require('./ingredientsObtainer')
 
 //ingredient creator that returns an array of dummy ingredient names of varying lengths
 //const ingredientCreator = require('./ingredientCreator')
@@ -155,7 +158,7 @@ async function seed() {
     }
   })
 
-  const recipe = await Promise.all([
+  let recipe = await Promise.all([
     Recipes.create({
       name: 'Salad Soup',
       instructions: [
@@ -202,6 +205,30 @@ async function seed() {
       imageUrl: '/rabbit.jpeg'
     })
   ])
+
+  unirestRecipeDetailsFinal.forEach(async recipeDetails => {
+    try {
+      const newRecipe = await Recipes.create({
+        name: recipeDetails.name,
+        instructions: recipeDetails.instructions,
+        description: recipeDetails.description,
+        imageUrl: recipeDetails.imageUrl
+      })
+
+      recipe.push(newRecipe) //recipe array above is updated
+      console.log(
+        `The recipe called ${
+          recipeDetails.name
+        } was added to the 'Recipes' table.`
+      )
+    } catch (err) {
+      console.log(
+        `For some reason, the recipe called ${
+          recipeDetails.name
+        } could not be added to the 'Recipes' table.`
+      )
+    }
+  })
 
   const ingredientList = await Promise.all([
     Items.create({

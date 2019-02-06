@@ -3,6 +3,27 @@
 
 /////////////////////////////////Ingredients//////////////////////////////////////
 
+// unirest
+//   .get(
+//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/autocomplete?number=50&query=potato'
+//   )
+//   .header(
+//     'X-RapidAPI-Key',
+//     '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
+//   )
+//   .end(function(result) {
+//     // Useful members are result.status, result.headers, and result.body
+
+//     console.log(result.status, result.headers)
+//     const ingredientsObjectsArray = result.body
+//     let ingredients = []
+
+//     ingredientsObjectsArray.forEach(element =>
+//       ingredients.push(element['name'])
+//     )
+//     console.log(ingredients)
+//   })
+
 let unirestIngredients = [
   'apple',
   'applesauce',
@@ -401,7 +422,7 @@ let unirestIngredients = [
   'hazelnut milk',
   'arecanut',
   'pecan nuts',
-  ' nutmeg',
+  'nutmeg',
   'oil',
   'oil packed tuna',
   'oil cured black olives',
@@ -466,48 +487,48 @@ let unirestIngredients = [
   'cooked quick oats',
   'cooked quick grits',
   'cooked quick-cooking brown rice',
-  ' mint',
-  ' dill',
-  ' sage',
-  ' peas',
-  ' corn',
-  ' figs',
-  ' basil',
-  ' thyme',
-  ' herbs',
-  ' fruit',
-  ' ginger',
-  ' chives',
-  ' yeast',
-  ' nutmeg',
-  ' parsley',
-  ' tuna',
-  ' pasta',
-  ' ricotta',
-  ' cilantro',
-  ' rosemary',
-  ' tarragon',
-  ' marjoram',
-  ' bay leaf',
-  ' mushrooms',
-  ' mozzarella',
-  ' chorizo',
-  ' green beans',
-  ' corn kernels',
-  ' bean sprouts',
-  ' horseradish',
-  ' sardines',
-  ' lavender',
-  ' epazote',
-  ' shiitake mushrooms',
-  ' pasta dough',
-  ' lasagne sheets',
-  ' anchovies',
-  ' fenugreek leaves',
-  ' herring',
-  ' tamarind',
-  ' spaghettini',
-  ' bulk chorizo',
+  'mint',
+  'dill',
+  'sage',
+  'peas',
+  'corn',
+  'figs',
+  'basil',
+  'thyme',
+  'herbs',
+  'fruit',
+  'ginger',
+  'chives',
+  'yeast',
+  'nutmeg',
+  'parsley',
+  'tuna',
+  'pasta',
+  'ricotta',
+  'cilantro',
+  'rosemary',
+  'tarragon',
+  'marjoram',
+  'bay leaf',
+  'mushrooms',
+  'mozzarella',
+  'chorizo',
+  'green beans',
+  'corn kernels',
+  'bean sprouts',
+  'horseradish',
+  'sardines',
+  'lavender',
+  'epazote',
+  'shiitake mushrooms',
+  'pasta dough',
+  'lasagne sheets',
+  'anchovies',
+  'fenugreek leaves',
+  'herring',
+  'tamarind',
+  'spaghettini',
+  'bulk chorizo',
   'greens',
   'green tea',
   'green peas',
@@ -1128,108 +1149,79 @@ let unirestIngredients = [
   'candied orange peel',
   'mandarin oranges',
   'mandarin orange segments',
-  'red flesh navel orange'
+  'red flesh navel orange',
+  'potato',
+  'potato chips',
+  'potato starch',
+  'potato flakes',
+  'potato buns',
+  'potato salad',
+  'potato gnocchi',
+  'potato bread',
+  'potato hash',
+  'potato puffs',
+  'potato leaves',
+  'red potato',
+  'new potato',
+  'waxy potatoes',
+  'gold potatoes',
+  'sweet potato',
+  'white potatoes',
+  'idaho potatoes',
+  'sweet potato puree',
+  'sweet potato starch noodles',
+  'sweet potato leaf',
+  'purple potatoes',
+  'cream of potato soup',
+  'fingerling potatoes',
+  'white sweet potatoes',
+  'french fried potatoes',
+  'red-skinned sweet potatoes',
+  'cooked hash browned potatoes'
 ]
 
 unirestIngredients.sort()
+
+unirestIngredients = unirestIngredients.map(str => {
+  str = str[0].toUpperCase() + str.slice(1)
+  return str
+})
 
 const unirestIngredientsSet = new Set(unirestIngredients)
 unirestIngredients = [...unirestIngredientsSet]
 
 //////////////////////////////////////////Recipes////////////////////////////////////////////////
 
-let unirestRecipeIDObjects = [
-  {
-    id: 218244,
-    title: 'Roast beef & carrots with easy gravy',
-    image: 'https://spoonacular.com/recipeImages/218244-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 1,
-    likes: 243
-  },
-  {
-    id: 198235,
-    title: 'Cook the Book: Perfect Pot Roast',
-    image: 'https://spoonacular.com/recipeImages/198235-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 1,
-    likes: 8
-  },
-  {
-    id: 199412,
-    title: 'Irish Channel Corned Beef and Cabbage',
-    image: 'https://spoonacular.com/recipeImages/199412-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 1,
-    likes: 0
-  },
-  {
-    id: 626382,
-    title: 'Barbecue Beef Stew',
-    image: 'https://spoonacular.com/recipeImages/626382-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 2,
-    likes: 46
-  },
-  {
-    id: 81789,
-    title: 'Roasted Beef Brisket',
-    image: 'https://spoonacular.com/recipeImages/81789-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 2,
-    likes: 43
-  },
-  {
-    id: 368349,
-    title: 'Tangy Pot Roast',
-    image: 'https://spoonacular.com/recipeImages/368349-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 2,
-    likes: 18
-  },
-  {
-    id: 100753,
-    title: 'Melt in Your Mouth Beef Stew',
-    image: 'https://spoonacular.com/recipeImages/100753-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 2,
-    likes: 1
-  },
-  {
-    id: 12436,
-    title: 'Beef Stew',
-    image: 'https://spoonacular.com/recipeImages/12436-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 2,
-    likes: 0
-  },
-  {
-    id: 365817,
-    title: "Best Corned Beef 'n' Cabbage",
-    image: 'https://spoonacular.com/recipeImages/365817-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 2,
-    likes: 0
-  },
-  {
-    id: 388840,
-    title: "Easy Corned Beef 'n' Cabbage",
-    image: 'https://spoonacular.com/recipeImages/388840-312x231.jpg',
-    imageType: 'jpg',
-    usedIngredientCount: 4,
-    missedIngredientCount: 2,
-    likes: 0
-  }
-]
+//Get details of recipe based on its ID
+
+// unirest
+//   .get(
+//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/161120/information'
+//   )
+//   .header(
+//     'X-RapidAPI-Key',
+//     '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
+//   )
+//   .end(function(result) {
+//     console.log(result.status, result.headers, result.body)
+//   })
+
+//////////////////////////////
+//Get recipes based on stated ingredients
+
+// unirest
+//   .get(
+//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ingredients=pasta%2C+tomato%2Csausage%2C+basil'
+//   )
+//   .header(
+//     'X-RapidAPI-Key',
+//     '182b450be9mshbb5f865d06b280cp1c805bjsn3b4a55f8187c'
+//   )
+//   .end(function(result) {
+//     console.log(result.status, result.headers, result.body)
+//   })
+
+let unirestRecipeIDObjects = []
 
 let unirestRecipeDetails = [
   {
@@ -1299,6 +1291,214 @@ let unirestRecipeDetails = [
       'Heat oven to 240C/220C fan/gas 9.Mix the flour and mustard powder withsome seasoning, then rub all over the beef. Put the onion and carrots into a roasting tin and set the beef on top,then cook for 20 mins. Reduce oven to 190C/170C fan/gas 5 and continue to cook the beef for 30 minutes if you like it rare, 40 minutes for medium rare and 1 hr for well done. Remove the beef and carrots from the oven, place onto warm plates or platters and cover with foil to keep warm.Let the beef rest for 30 minutes while you turn up the oven to cook your Yorkshirepuds and finish the potatoes.For the gravy, put the tin with all the meat juices and onions back onto the hob. Stir in the flour, scraping all the stuck bits off the bottom of the tin.Cook for 30 seconds, then slowly stir in the stock, little by little. Bubble to a nice gravy, season, then serve with the beef, carved into slices, carrots and all the other trimmings',
     analyzedInstructions: [{name: '', steps: [Array]}],
     creditsText: 'BBC Good Food'
+  },
+  {
+    id: 81789,
+    title: 'Roasted Beef Brisket',
+    readyInMinutes: 45,
+    servings: 10,
+    image: 'https://spoonacular.com/recipeImages/81789-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: ['jewish'],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['gluten free', 'dairy free'],
+    occasions: ['hanukkah'],
+    winePairing: {
+      pairedWines: ['shiraz', 'tempranillo', 'zinfandel'],
+      pairingText:
+        "Shiraz, Tempranillo, and Zinfandel are my top picks for Beef Brisket. All these red wines can handle the meaty, smokey flavor of brisket. If you're talking traditional Jewish brisket, you'll want to look for a kosher red wine. The Penfolds Bin 8 Cabernet-Shiraz with a 4.1 out of 5 star rating seems like a good match. It costs about 20 dollars per bottle.",
+      productMatches: [[Object]]
+    },
+    instructions: 'No instructions at this time',
+    analyzedInstructions: [],
+    sourceName: null,
+    creditsText: null
+  },
+  {
+    id: 368349,
+    title: 'Tangy Pot Roast',
+    readyInMinutes: 435,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/368349-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['gluten free', 'dairy free'],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'Place the potatoes, carrots and onion in a 5-qt slow cooker. Cut roast in half; rub with salt and pepper. Place over vegetables. Combine salad dressing and wine; pour over roast.  Cover and cook on low for 7-8 hours or until meat is tender. Skim fat from cooking juices; thicken juices if desired',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Taste of Home'
+  },
+  {
+    id: 365817,
+    title: "Best Corned Beef 'n' Cabbage",
+    readyInMinutes: 55,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/365817-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['gluten free', 'dairy free', 'whole 30'],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'In a 6-qt. pressure cooker, combine water and contents of corned beef seasoning packet; add beef. Close cover securely. Turn regulator knob to pressure and select high pressure. Cook for 45 minutes.  Meanwhile, in a large saucepan, combine the cabbage, potatoes and broth. Bring to a boil. Reduce heat; cover and simmer for 10 minutes. Add carrots and onion. Cover and simmer 20-25 minutes longer or until vegetables are tender; drain. Release pressure according to manual instructions. Remove beef to a serving platter. Discard cooking liquid. Serve beef with cabbage, potatoes, carrots and onion',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Taste of Home'
+  },
+  {
+    id: 608865,
+    title: 'Penne with Sausage and Roasted Tomatoes',
+    readyInMinutes: 65,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/608865-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['dairy free'],
+    occasions: [],
+    winePairing: {pairedWines: [], pairingText: '', productMatches: []},
+    instructions:
+      'Preheat oven to 225 degrees. Line a baking sheet with aluminum foil. Peel 6 cloves garlic and toss with tomatoes, 1 tablespoon olive oil, salt and pepper. Roast on prepared baking sheet in preheated oven for 45 minutes. Remove from oven and set aside. When the there is about 15 minutes left for the tomatoes, bring a large pot of water to boil. Cook pasta according to package directions. Drain but reserve 1/4 cup pasta water. While pasta is cooking, cook sausage in a large skillet over medium high heat until cooked through. Drain and reserve 1 tablespoon pan drippings.Add remaining tablespoon of olive oil to pan drippings. Return sausage to the pan. Add garlic, cook 30 seconds. Add in pasta. Stir. Pour tomatoes, garlic and any pan juices that accumulated on the aluminum foil into the pan. Gently toss to combine. If pasta appears dry, add reserved pasta water. Sprinkle with basil and serve',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Lifes Ambrosia'
+  },
+  {
+    id: 698664,
+    title: 'Fusilli with Lentils, Sausage & Tomatoes',
+    readyInMinutes: 25,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/698664-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['dairy free'],
+    occasions: [],
+    winePairing: {
+      pairedWines: [],
+      pairingText:
+        'No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.',
+      productMatches: []
+    },
+    instructions:
+      'Put a large pot of salted water on to boil.Heat oil in a large skillet over medium heat. Add sausage and cook, breaking up clumps with a fork, until browned, 3 to 5 minutes. Add lentil soup and tomatoes and bring to a simmer. Cook, stirring occasionally, until heated through, about 5 minutes. Stir in basil (or parsley) and season with salt and pepper.Cook pasta until al dente, 8 to 10 minutes. Drain and transfer to a large bowl. Toss with sauce and serve',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Eating Well'
+  },
+  {
+    id: 535914,
+    title: 'Threaded Spaghetti Hot Dog Bites with Homemade Marinara Sauce',
+    readyInMinutes: 60,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/535914-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: ['american'],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['dairy free'],
+    occasions: [],
+    winePairing: {pairedWines: [], pairingText: '', productMatches: []},
+    instructions:
+      'Heat olive oil in a large pot over low heat. Add the garlic and cook until golden, about 3 minutes. Stir in the basil and tomatoes. Bring to a boil and add the salt; reduce heat to low and simmer, stirring occasionally, until sauce has thickened, about 40-45 minutes. Stir in the balsamic vinegar. Thread 5-7 spaghetti strands through each slice of sausage. In a large pot of boiling salted water, cook pasta according to package instructions; drain well. Serve immediately with marinara sauce',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Damn Delicious'
+  },
+  {
+    id: 449532,
+    title: 'Smoked Sausage with Pasta',
+    readyInMinutes: 30,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/449532-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['side dish'],
+    diets: ['dairy free'],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'Cook pasta according to package directions. Meanwhile, in a large nonstick skillet, saute the sausage, mushrooms, garlic and basil in oil until mushrooms are tender. Drain pasta; add to the sausage mixture. Add the tomatoes, salt and pepper. Toss gently; heat thoroughly',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Taste of Home'
+  },
+  {
+    id: 161467,
+    title: 'Caprese Sausage Pasta Salad',
+    readyInMinutes: 90,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/161467-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['salad'],
+    diets: [],
+    occasions: [],
+    winePairing: {
+      pairedWines: [],
+      pairingText:
+        'No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.',
+      productMatches: []
+    },
+    instructions:
+      'Fill 3-quart saucepan 2/3 full of water and heat to a boil. Add Pasta. Gently boil uncovered for 12 minutes, stirring occasionally; drain.  Rinse with cold water to cool; drain well.  Meanwhile, to toast pine nuts, place in ungreased heavy skillet. Cook over medium heat 3 to 5 minutes, stirring constantly until nuts are light brown.  In large bowl, combine seasoning mix from packet, cold water and oil. Stir in tomatoes, cheese and sausage. Stir in cooked pasta until well mixed. Cover; refrigerate about 1 hour or until chilled; rarnish with pine nuts and basil',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Betty Crocker'
+  },
+  {
+    id: 535565,
+    title: 'One Pot Pasta',
+    readyInMinutes: 20,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/535565-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: [],
+    occasions: [],
+    winePairing: {
+      pairedWines: [],
+      pairingText:
+        'No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.',
+      productMatches: []
+    },
+    instructions:
+      'In a large stockpot or Dutch oven over medium high heat, combine spaghetti, sausage, onion, tomatoes, basil, garlic and 4 1/2 cups water; season with salt and pepper, to taste. Bring to a boil; reduce heat and simmer, uncovered, until pasta is cooked through and liquid has reduced, about 8-10 minutes. Stir in Parmesan. Serve immediately.',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Damn Delicious'
+  },
+  {
+    id: 284366,
+    title: 'Free-Form Lasagna',
+    readyInMinutes: 55,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/284366-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: ['mediterranean', 'european', 'italian'],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: [],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'Bring a large pot of salted water to boil.Cook sausage in a skillet over medium-high heat, breaking up large pieces, until it loses its pink color, about 5 minutes. Stir in tomatoes, oregano and 1/2 tsp. salt, reduce heat to medium-low and simmer until thick, stirring occasionally, about 20 minutes.  Combine ricotta, Parmesan and basil in a medium microwave-safe bowl.  Add noodles to boiling water; cook until just tender, 10 minutes or as package label directs. Just before noodles are done, microwave ricotta mixture on high for 30 seconds, stirring once. Drain noodles well.  Spread 1 1/2 Tbsp. sauce on each of 4 dinner plates. Place a noodle on top and spread with 1 1/2 Tbsp. cheese mixture. Top with 1 1/2 Tbsp. sauce. Repeat with noodles, cheese mixture and sauce, ending with a layer of sauce. Sprinkle Parmesan on top. Serve, passing additional Parmesan',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'My Recipes'
+  },
+  {
+    id: 161120,
+    title: 'Italian Sausage and Pepper Stew',
+    readyInMinutes: 25,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/161120-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: ['mediterranean', 'european', 'italian'],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: [],
+    occasions: ['fall', 'winter'],
+    winePairing: {},
+    instructions:
+      'In 6-quart Dutch oven, cook and stir sausage and bell peppers over medium-high heat about 8 minutes or until sausage is no longer pink; drain.  Reduce heat to medium-low. Stir in tomatoes and basil; cover and simmer 10 minutes.  Meanwhile, cook and drain pasta as directed on package. Serve sausage and peppers over cooked pasta; top with cheese',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    sourceName: null,
+    creditsText: null
   }
 ]
 

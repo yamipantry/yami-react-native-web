@@ -12,7 +12,7 @@
 // router.post('/', async (req, res, next) => {
 //   try {
 //     const message = await Messages.create(req.body)
-//     res.json(messages)
+//     res.json(message)
 //   } catch (err) {
 //     next(err)
 //   }

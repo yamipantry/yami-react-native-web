@@ -5,6 +5,7 @@ const db = require('../db')
 const Items = require('./ingredientList')
 const Bookmarks = require('./bookmarks')
 const yamiDinners = require('./yamiDinners')
+const Messages = require('./messages')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -42,5 +43,6 @@ module.exports = {
   Userfriends,
   Items,
   Bookmarks,
-  yamiDinners
+  yamiDinners,
+  Messages
 }

@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
 // Assumes friends will be added by username or email
 
 router.post('/', async (req, res, next) => {
-  console.log(req.body)
+  
   try {
     const findFriend = await User.findOne({
       where: Sequelize.or({userName: req.body.input}, {email: req.body.input}),

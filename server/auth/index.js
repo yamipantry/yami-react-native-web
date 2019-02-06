@@ -2,6 +2,14 @@ const router = require('express').Router()
 const {User, Ingredients} = require('../db/models/')
 module.exports = router
 
+// router.get('/loggedIn', async (req,res,next) => {
+//   try{
+//     console.log(req.session.passport)
+//     res.json(req.session.passport)
+//   } catch(err) {
+//     next(err)
+//   }
+// })
 router.post('/login', async (req, res, next) => {
   try {
     let user = await User.findOne({where: {userName: req.body.userName}})
@@ -33,7 +41,6 @@ router.post('/signup', async (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
-  console.log('hello')
   req.logout()
   req.session.destroy()
   res.redirect('/')

@@ -114,13 +114,11 @@ User.modifyIngredients = async function(id, ingredient, method) {
       pantryItems = [...pantryItems, ing]
     }
   } else if (method === 'deleted') {
-    pantryItems = [
-      ...pantryItems.filter(function(value) {
-        return value !== ingredient
-      })
-    ]
+    pantryItems = pantryItems.filter(function(value) {
+      return value !== ingredient
+    })
   }
-  const updated = await this.update(
+  return this.update(
     {
       pantryItems: pantryItems
     },
@@ -130,7 +128,6 @@ User.modifyIngredients = async function(id, ingredient, method) {
       plain: true
     }
   )
-  return updated
 }
 
 /**

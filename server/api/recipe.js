@@ -34,7 +34,6 @@ router.post('/', async (req, res, next) => {
     const recipe = await Recipes.create(obj, {
       include: [{model: Items, as: 'ingredientsIncluded'}, {model: User}]
     })
-    console.log(recipe)
     res.json(recipe)
   } catch (err) {
     next(err)

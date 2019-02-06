@@ -50,7 +50,18 @@ Recipes.turnToArray = function(object, id) {
 Recipes.findMatchingRecipesWithIngredients = async function(id) {
   //all recipes, including their ingredients
   const recipes = await this.findAll({
-    include: [{model: Items, as: 'ingredientsIncluded'}]
+    include: [
+      {
+        model: Items,
+        as: 'ingredientsIncluded',
+        where: {
+          userId: null
+        }
+      }
+    ]
+    // where: {
+    //   userId: null
+    // }
   })
   //finds user pantryItems by id
   const pantry = await User.findById(id, {

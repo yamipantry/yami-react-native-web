@@ -1,4 +1,5 @@
 require('../../secrets')
+
 const Sequelize = require('sequelize')
 const pkg = require('../../package.json')
 
@@ -21,6 +22,7 @@ const db = new Sequelize(
     logging: false
   }
 )
+
 module.exports = db
 
 // This is a global Mocha hook used for resource cleanup.

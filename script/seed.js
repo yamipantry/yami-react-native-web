@@ -24,39 +24,39 @@ async function seed() {
       email: 'cody@email.com',
       password: '123',
       firstName: 'Cody',
-      lastName: 'Email',
+      lastName: 'Wilson',
       streetName: '12 Cody St',
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
       pantryItems: ['Butternut squash', 'Chicken', 'Beef', 'Celery'],
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image5.png'
     }),
     User.create({
       userName: 'Murphy',
       email: 'murphy@email.com',
       password: '123',
       firstName: 'Murphy',
-      lastName: 'Email',
+      lastName: 'Bedford',
       streetName: '12 murphy St',
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
       pantryItems: ['Lettuce', 'Butternut squash', 'Love', 'Flour'],
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image7.png'
     }),
     User.create({
       userName: 'Punny',
       email: 'pun@email.com',
       password: '123',
       firstName: 'Pun',
-      lastName: 'Email',
+      lastName: 'Patenaude',
       streetName: '12 pun St',
       city: 'san luis obispo',
       state: 'ca',
       zip: '93401',
       pantryItems: ['Beans', 'Butternut squash', 'Lettuce', 'Celery'],
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image8.png'
     }),
     User.create({
       userName: 'Maggie',
@@ -72,23 +72,27 @@ async function seed() {
         'Sugar',
         'Rabbit',
         'Carrots',
-        'Ceans',
+        'Beans',
         'Butternut squash',
         'Tomato'
       ],
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image1.png'
     }),
     User.create({
       userName: 'Abbie',
       email: 'abbie@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image2.png',
+      firstName: 'Abbie',
+      lastName: 'Bell'
     }),
     User.create({
       userName: 'Archie',
       email: 'archie@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image11.png',
+      firstName: 'Archie',
+      lastName: 'Collins'
     }),
     User.create({
       userName: 'Frank',
@@ -106,73 +110,96 @@ async function seed() {
       userName: 'Bea',
       email: 'Bea@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image3.png',
+      firstName: 'Bea',
+      lastName: 'Cortez'
     }),
     User.create({
       userName: 'Elle',
       email: 'elle@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image4.png',
+      firstName: 'Elle',
+      lastName: 'Marta'
     }),
     User.create({
       userName: 'Hank',
       email: 'Hank@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/pic.jpeg',
+      firstName: 'Hank',
+      lastName: 'Smith'
     }),
     User.create({
       userName: 'Norma',
       email: 'norma@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image6.png',
+      firstName: 'Norma',
+      lastName: 'Wade'
     }),
     User.create({
       userName: 'Pattie',
       email: 'pattie@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image9.png',
+      firstName: 'Pattie',
+      lastName: 'Reed'
     }),
     User.create({
-      userName: 'Dala',
+      userName: 'Darla',
       email: 'darla@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image10.png',
+      firstName: 'Darla',
+      lastName: 'Newsom'
     }),
     User.create({
       userName: 'Joan',
       email: 'joan@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/profilepics/Image12.png',
+      firstName: 'Joan',
+      lastName: 'Lodge'
     }),
     User.create({
       userName: 'John',
       email: 'john@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/pic.jpeg',
+      firstName: 'John',
+      lastName: 'Carducci'
     }),
     User.create({
       userName: 'Nina',
       email: 'nina@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/pic.jpeg',
+      firstName: 'Nina',
+      lastName: 'Wallace'
     }),
     User.create({
       userName: 'Delores',
       email: 'delores@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/pic.jpeg',
+      firstName: 'Delores',
+      lastName: 'Pineiro'
     }),
     User.create({
       userName: 'Lenny',
       email: 'lenny@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      firstName: 'Lenny',
+      lastName: 'Tung'
     }),
     User.create({
       userName: 'Lulu',
       email: 'lulu@email.com',
       password: '123',
-      profileImage: '/pic.jpeg'
+      profileImage: '/pic.jpeg',
+      firstName: 'Lulu',
+      lastName: 'Gosai'
     })
   ])
 

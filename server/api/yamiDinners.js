@@ -5,6 +5,7 @@ const googleMapsClient = require('@google/maps').createClient({
   key: GOOGLE_MAP_KEY,
   Promise: Promise
 })
+// const Messages = require('../db/models')
 
 router.get('/', async (req, res, next) => {
   try {
@@ -32,6 +33,16 @@ router.post('/', async (req, res, next) => {
       lng: location.lng,
       userId: req.user.id
     })
+    //yamiDinnerId = `${yamiDinner.lng}, ${yamiDinner.lat}, ${Date.now()}`
+    //userId = req.user.id
+    //messages Dammit Tom
+
+    // const chatObj = {
+    //   yamiDinnerId = `${yamiDinner.lng}, ${yamiDinner.lat}, ${Date.now()}`,
+    //   userId: req.user.id,
+    //   message: 'Dammit Tom'
+    // }
+    // await Messages.create(chatObj)
     res.json(yamiDinner)
   } catch (err) {
     next(err)

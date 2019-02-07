@@ -23,4 +23,21 @@ router.get('/:recipeId', async (req, res, next) => {
   }
 })
 
+router.post('/', async (req, res, next) => {
+  try {
+    let ingredients = await Recipes.turnToArray(
+      req.body.ingredientsIncluded,
+      req.user.id
+    )
+    req.body.ingredientsIncluded = ingredients
+    const obj = {...req.body}
+    const recipe = await Recipes.create(obj, {
+      include: [{model: Items, as: 'ingredientsIncluded'}, {model: User}]
+    })
+    res.json(recipe)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router

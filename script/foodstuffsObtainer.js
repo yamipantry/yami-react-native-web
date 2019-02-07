@@ -1,5 +1,5 @@
 //An ingredients API that supplies recipe, ingredients, etc. information
-// const unirest = require('unirest')
+//const unirest = require('unirest')
 
 // /////////////////////////////////Ingredients//////////////////////////////////////
 
@@ -24,7 +24,7 @@
 //     console.log(ingredients)
 //   })
 
-let unirestIngredients = [
+let unirestIngredientsStrings = [
   'apple',
   'applesauce',
   'apple juice',
@@ -1833,18 +1833,38 @@ let unirestIngredients = [
   'lump crab',
   'fake crab',
   'cooked crab',
-  'dungeness crabs'
+  'dungeness crabs',
+  'Carrots',
+  'Beans',
+  'Butternut squash',
+  'Lettuce',
+  'Beef',
+  'Chicken',
+  'Sugar',
+  'Rabbit',
+  'Tomato',
+  'Celery',
+  'Love',
+  'Pepperoni',
+  'Flour'
 ]
 
-unirestIngredients.sort()
+unirestIngredientsStrings.sort()
 
-unirestIngredients = unirestIngredients.map(str => {
+unirestIngredientsStrings = unirestIngredientsStrings.map(str => {
   str = str[0].toUpperCase() + str.slice(1)
   return str
 })
 
-const unirestIngredientsSet = new Set(unirestIngredients)
-unirestIngredients = [...unirestIngredientsSet]
+const unirestIngredientsStringsSet = new Set(unirestIngredientsStrings)
+unirestIngredientsStrings = [...unirestIngredientsStringsSet]
+
+//Here we change an ingredient string into an ingredient object such as {name:'string'}
+let unirestIngredients = unirestIngredientsStrings.map(ingredientName => {
+  let ingredientObject = {}
+  ingredientObject.name = ingredientName
+  return ingredientObject
+})
 
 //////////////////////////////////////////Recipes////////////////////////////////////////////////
 
@@ -1852,7 +1872,7 @@ unirestIngredients = [...unirestIngredientsSet]
 
 // unirest
 //   .get(
-//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/161120/information'
+//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/160906/information'
 //   )
 //   .header(
 //     'X-RapidAPI-Key',
@@ -1865,9 +1885,12 @@ unirestIngredients = [...unirestIngredientsSet]
 //////////////////////////////
 //Get recipes based on stated ingredients
 
+//Sample string
+//'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ingredients=pasta%2C+tomato%2Csausage%2C+basil'
+
 // unirest
 //   .get(
-//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ingredients=pasta%2C+tomato%2Csausage%2C+basil'
+//     'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?number=10&ranking=1&ingredients=clam'
 //   )
 //   .header(
 //     'X-RapidAPI-Key',
@@ -2155,6 +2178,219 @@ let unirestRecipeDetails = [
     analyzedInstructions: [{name: '', steps: [Array]}],
     sourceName: null,
     creditsText: null
+  },
+  {
+    id: 5432,
+    title: 'Seasoned Shrimp',
+    readyInMinutes: 45,
+    servings: 8,
+    image: 'https://spoonacular.com/recipeImages/5432-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['side dish'],
+    diets: [
+      'gluten free',
+      'dairy free',
+      'fodmap friendly',
+      'whole 30',
+      'pescatarian'
+    ],
+    occasions: [],
+    winePairing: {
+      pairedWines: ['pinot grigio', 'riesling', 'sauvignon blanc'],
+      pairingText:
+        'Shrimp can be paired with Pinot Grigio, Riesling, and Sauvignon Blanc. These crisp white wines work well with shrimp prepared in a variety of ways, whether grilled, fried, or in garlic sauce. One wine you could try is Luna Nuda Pinot Grigio. It has 4.4 out of 5 stars and a bottle costs about 14 dollars.',
+      productMatches: [[Object]]
+    },
+    instructions:
+      'Heat oil in a large heavy saucepan over high heat. Add shrimp, and cook 1 minute. Stir in stock, seasoning, and lemon juice. Simmer 1 to 2 minutes or until shrimp are just cooked through. Drain; chill.',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'My Recipes'
+  },
+  {
+    id: 882,
+    title: 'Vermentino-Braised Sea Bass',
+    readyInMinutes: 15,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/882-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: [
+      'gluten free',
+      'dairy free',
+      'paleolithic',
+      'primal',
+      'fodmap friendly',
+      'pescatarian'
+    ],
+    occasions: [],
+    winePairing: {
+      pairedWines: ['pinot grigio', 'gruener veltliner', 'pinot noir'],
+      pairingText:
+        "Pinot Grigio, Gruener Veltliner, and Pinot Noir are great choices for Seabass. Fish is as diverse as wine, so it's hard to pick wines that go with every fish. A crisp white wine, such as a pinot grigio or Grüner Veltliner, will suit any delicately flavored white fish. Meaty, strongly flavored fish such as salmon and tuna can even handle a light red wine, such as a pinot noir. One wine you could try is Attems Ramato Pinot Grigio. It has 4.4 out of 5 stars and a bottle costs about 14 dollars",
+      productMatches: [[Object]]
+    },
+    instructions:
+      'Using a sharp knife, lightly score the skin of the sea bass fillets in a cross-hatch pattern. Season both sides of the sea bass fillets with salt and pepper, then dust very lightly with flour. In a large skillet, heat 2 tablespoons of the olive oil until almost smoking. Add the sea bass fillets, skin side down, and cook over moderately high heat until browned and crisp, about 3 minutes. Carefully turn the sea bass fillets with a spatula. Pour the white wine into the skillet and add the bay leaves. Cook the fillets over moderate heat until just cooked through, about 2 minutes longer. Transfer the fillets to a warmed platter and cover loosely with aluminum foil.  Add the fish stock or clam juice to the skillet and simmer over moderately high heat until the sauce is slightly reduced, about 2 minutes. Season with salt and stir in the remaining tablespoon of olive oil. Spoon the sauce over the fish and serve',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Food and Wine'
+  },
+  {
+    id: 474596,
+    title: 'Tomato Cream Sauce',
+    readyInMinutes: 45,
+    servings: 3,
+    image: 'https://spoonacular.com/recipeImages/474596-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['sauce'],
+    diets: ['gluten free', 'pescatarian'],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'Add all ingredients except salt to a medium sized saucepan and bring to a boil. Reduce heat and simmer, uncovered and stirring occasionally, for 30-40 minutes, or until sauce has reduced to about 3 cups and the flavour is rich and concentrated.Salt generously to taste',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'The Endless Meal'
+  },
+  {
+    id: 743615,
+    title: 'Beer Bloody Marys',
+    readyInMinutes: 5,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/743615-556x370.jpeg',
+    imageType: 'jpeg',
+    cuisines: [],
+    dishTypes: [],
+    diets: ['gluten free', 'dairy free', 'pescatarian'],
+    occasions: ["father's day"],
+    winePairing: {pairedWines: [], pairingText: '', productMatches: []},
+    instructions:
+      'Combine the lime juice, tomato-clam juice and hot sauce in a pitcher.Mix well and refrigerate until ready to serve.Spread a small amount of salt in a shallow saucer. Moisten the rims of 4 tall glasses with water and dip in the salt. Fill with ice, then fill halfway with the tomato-clam juice mixture. Top with beer and garnish with celery stalks and lime wedges',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Foodnetwork'
+  },
+  {
+    id: 598988,
+    title: 'Baked Clams',
+    readyInMinutes: 25,
+    servings: 2,
+    image: 'https://spoonacular.com/recipeImages/598988-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['side dish'],
+    diets: ['pescatarian'],
+    occasions: [],
+    winePairing: {
+      pairedWines: ['chardonnay', 'muscadet', 'riesling'],
+      pairingText:
+        "Clams on the menu? Try pairing with Chardonnay, Muscadet, and Riesling. Buttery chardonnay is great for scallops, shrimp, crab, and lobster, while muscadet is a classic pick for mussels, oysters, and clams. If you've got some spice in your shellfish, a semi-dry riesling can balance out the heat. The Waterbrook Reserve Chardonnay with a 5 out of 5 star rating seems like a good match. It costs about 20 dollars per bottle.",
+      productMatches: [[Object]]
+    },
+    instructions:
+      'Preheat the broiler.Open the clams so that they are on the half shell, and set them aside.Mix together the bread crumbs, parsley, Parmesan cheese, olive, oil, and clam juice into a semi-dry paste.Spoon and pat the breadcrumb mixture onto each clam. Place them in a broiler pan and put them under the broiler for 5 to 8 minutes or until the breadcrumbs are browned on top',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Leites Culinaria'
+  },
+  {
+    id: 314071,
+    title: 'Beer-Based Bloody Marys',
+    readyInMinutes: 25,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/314071-556x370.jpeg',
+    imageType: 'jpeg',
+    cuisines: [],
+    dishTypes: [],
+    diets: ['gluten free', 'dairy free', 'pescatarian'],
+    occasions: [],
+    winePairing: {pairedWines: [], pairingText: '', productMatches: []},
+    instructions:
+      'Watch how to make this recipe.In a pitcher, combine the lime juice, tomato-clam juice and hot sauce. Mix well and chill until ready to serve.Spread a small amount of salt into a shallow saucer. Moisten the rims of tall glasses and coat them in salt. Fill the glasses with ice and pour in the cocktail.Add the beer and garnish each glass with a celery stick.',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Foodnetwork'
+  },
+  {
+    id: 180069,
+    title: 'Seafood à la King',
+    readyInMinutes: 15,
+    servings: 6,
+    image: 'https://spoonacular.com/recipeImages/180069-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['side dish'],
+    diets: ['gluten free', 'primal', 'pescatarian'],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'Heat oven to 450F.In medium bowl, stir 2 1/4 cups Bisquick mix and the milk until soft dough forms.Drop by 6 spoonfuls onto ungreased cookie sheet.Bake 10 minutes or until golden brown.Meanwhile, in 2-quart saucepan, mix remaining ingredients. Heat to boiling over medium heat, stirring occasionally.To serve, split biscuits in half; place on 6 individual plates. Spoon generous 1/4 cup hot chowder mixture over bottom of each biscuit.Top with remaining biscuit halves. Spoon 1/4 cup chowder mixture over top of each biscuit',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Betty Crocker'
+  },
+  {
+    id: 609334,
+    title: 'Littlenecks in Fennel Broth',
+    readyInMinutes: 15,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/609334-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: [],
+    diets: [
+      'gluten free',
+      'dairy free',
+      'paleolithic',
+      'primal',
+      'pescatarian'
+    ],
+    occasions: [],
+    winePairing: {},
+    instructions:
+      'In a large sauté pan, heat olive oil over medium and add shallots and garlic.Cook one minute.Add fennel and white wine, bring to medium high and cook for another two minutes to reduce the wine a bit.Add clam juice and pepper and cover. Bring to a high simmer and cook for five minutes.Add cleaned little necks and cover (best if the cover is see through so you can watch the clams pop open) cook over high simmer  to a low boil for five minutes. You will see the clams pop open one by one.Once they all pop open (no more than five minutes), with tongs, remove to serving dishes. Discard any clams that did not pop open. Spoon broth and cooked fennel over clams, being careful not to spoon any sediment from the bottom of the pan as some sand will settle there that didn’t get cleaned off.Sprinkle the servings with the fennel fronds',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'A Family Feast '
+  },
+  {
+    id: 388118,
+    title: 'New England Clam Chowder',
+    readyInMinutes: 15,
+    servings: 3,
+    image: 'https://spoonacular.com/recipeImages/388118-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: ['american'],
+    dishTypes: ['side dish'],
+    diets: ['gluten free', 'primal'],
+    occasions: [],
+    winePairing: {
+      pairedWines: ['chardonnay', 'muscadet', 'riesling'],
+      pairingText:
+        "Chardonnay, Muscadet, and Riesling are great choices for Clams. Buttery chardonnay is great for scallops, shrimp, crab, and lobster, while muscadet is a classic pick for mussels, oysters, and clams. If you've got some spice in your shellfish, a semi-dry riesling can balance out the heat. You could try Buddha Kat Winery Chardonnay. Reviewers quite like it with a 4 out of 5 star rating and a price of about 25 dollars per bottle.",
+      productMatches: [[Object]]
+    },
+    instructions:
+      'In a large saucepan, combine the first five ingredients. Bring to a boil. Reduce heat; cover and simmer for 5 minutes.  Sprinkle with cheese if desired.',
+    analyzedInstructions: [{name: '', steps: [Array]}],
+    creditsText: 'Taste of Home'
+  },
+  {
+    id: 160906,
+    title: 'Creamy Tuna Cavatelli',
+    readyInMinutes: 50,
+    servings: 4,
+    image: 'https://spoonacular.com/recipeImages/160906-556x370.jpg',
+    imageType: 'jpg',
+    cuisines: [],
+    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+    diets: ['pescatarian'],
+    occasions: [],
+    winePairing: {
+      pairedWines: [],
+      pairingText:
+        'No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.',
+      productMatches: []
+    },
+    instructions:
+      'Heat pasta, water, chervil, pepper, vegetables and clam juice to boiling in 10-inch skillet; reduce heat. Cover and simmer 20 to 25 minutes, stirring occasionally, until pasta and vegetables are tender.Stir flour into sour cream dip. Gradually stir sour cream dip, cheese and tuna into pasta mixture. Cook over medium heat, stirring occasionally, until hot',
+    analyzedInstructions: [{name: '', steps: [Array]}]
   }
 ]
 

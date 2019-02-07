@@ -129,6 +129,7 @@ async function seed() {
       })
 
       ingredients.push(newIngredient) //ingredients array above is updated
+
       console.log(
         `The ingredient called ${element} was added to the 'Ingredients' table.`
       )

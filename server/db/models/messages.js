@@ -3,8 +3,7 @@ const db = require('../db')
 
 const Messages = db.define('messages', {
   yammiDinnerId: {
-    type: Sequelize.STRING,
-    primaryKey: true
+    type: Sequelize.STRING
   },
   userId: {
     type: Sequelize.INTEGER

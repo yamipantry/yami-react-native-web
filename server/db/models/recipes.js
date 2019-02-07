@@ -53,15 +53,9 @@ Recipes.findMatchingRecipesWithIngredients = async function(id) {
     include: [
       {
         model: Items,
-        as: 'ingredientsIncluded',
-        where: {
-          userId: null
-        }
+        as: 'ingredientsIncluded'
       }
     ]
-    // where: {
-    //   userId: null
-    // }
   })
   //finds user pantryItems by id
   const pantry = await User.findById(id, {

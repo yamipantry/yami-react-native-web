@@ -25,10 +25,43 @@ const Recipes = db.define('recipes', {
   }
 })
 
+Recipes.turnToArray = function(object, id) {
+  const obj = object.split(', ')
+  let result = []
+  for (let i = 0; i < obj.length; i++) {
+    let newObj = {}
+    newObj.userId = id
+    newObj.amount = obj[i]
+      .split(' ')
+      .slice(0, 2)
+      .join(' ')
+    newObj.ingredientName = obj[i]
+      .split(' ')
+      .slice(2)
+      .join(' ')
+    newObj.ingredientName =
+      newObj.ingredientName.charAt(0).toUpperCase() +
+      newObj.ingredientName.slice(1)
+    result.push(newObj)
+  }
+  return result
+}
+
 Recipes.findMatchingRecipesWithIngredients = async function(id) {
   //all recipes, including their ingredients
   const recipes = await this.findAll({
-    include: [{model: Items, as: 'ingredientsIncluded'}]
+    include: [
+      {
+        model: Items,
+        as: 'ingredientsIncluded',
+        where: {
+          userId: null
+        }
+      }
+    ]
+    // where: {
+    //   userId: null
+    // }
   })
   //finds user pantryItems by id
   const pantry = await User.findById(id, {

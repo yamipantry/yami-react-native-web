@@ -20,7 +20,7 @@ async function seed() {
   console.log('db synced!')
   const users = await Promise.all([
     User.create({
-      userName: 'CodyBadA$$',
+      userName: 'Cody',
       email: 'cody@email.com',
       password: '123',
       firstName: 'Cody',
@@ -33,7 +33,7 @@ async function seed() {
       profileImage: '/pic.jpeg'
     }),
     User.create({
-      userName: 'MuRphySL4W',
+      userName: 'Murphy',
       email: 'murphy@email.com',
       password: '123',
       firstName: 'Murphy',
@@ -59,11 +59,11 @@ async function seed() {
       profileImage: '/pic.jpeg'
     }),
     User.create({
-      userName: 'MagicalFruit',
+      userName: 'Maggie',
       email: 'bean@email.com',
       password: '123',
-      firstName: 'bean',
-      lastName: 'clean',
+      firstName: 'Maggie',
+      lastName: 'Dean',
       streetName: '12 bean st',
       city: 'san luis obispo',
       state: 'ca',
@@ -76,6 +76,102 @@ async function seed() {
         'Butternut squash',
         'Tomato'
       ],
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Abbie',
+      email: 'abbie@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Archie',
+      email: 'archie@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Frank',
+      email: 'Frank@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Earnest',
+      email: 'earnest@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Bea',
+      email: 'Bea@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Elle',
+      email: 'elle@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Hank',
+      email: 'Hank@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Norma',
+      email: 'norma@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Pattie',
+      email: 'pattie@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Dala',
+      email: 'darla@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Joan',
+      email: 'joan@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'John',
+      email: 'john@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Nina',
+      email: 'nina@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Delores',
+      email: 'delores@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Lenny',
+      email: 'lenny@email.com',
+      password: '123',
+      profileImage: '/pic.jpeg'
+    }),
+    User.create({
+      userName: 'Lulu',
+      email: 'lulu@email.com',
+      password: '123',
       profileImage: '/pic.jpeg'
     })
   ])
@@ -349,6 +445,74 @@ async function seed() {
     }),
     Userfriends.create({
       friendId: 2,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 4,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 5,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 6,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 7,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 8,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 9,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 10,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 11,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 12,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 13,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 14,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 15,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 16,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 17,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 18,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 19,
+      userId: 3
+    }),
+    Userfriends.create({
+      friendId: 20,
       userId: 3
     })
   ])

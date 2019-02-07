@@ -6,6 +6,7 @@ module.exports = io => {
       io.emit('35,-122,1-19-19', msg)
       //socket.broadcast.emit('chat message', msg);
     })
+
     socket.on('disconnect', () => {
       console.log(`Connection ${socket.id} has left the building`)
     })

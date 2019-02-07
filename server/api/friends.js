@@ -39,20 +39,29 @@ router.get('/', async (req, res, next) => {
 // Assumes friends will be added by username or email
 
 router.post('/', async (req, res, next) => {
+  
   try {
     const findFriend = await User.findOne({
       where: Sequelize.or({userName: req.body.input}, {email: req.body.input}),
-      attributes: ['id'],
+      attributes: [
+        'firstName',
+        'id',
+        'lastName',
+        'pantryItems',
+        'profileImage',
+        'userName'
+      ],
       raw: true
     })
     const foundId = findFriend.id
-    const friend = await Userfriends.findOrCreate({
+
+    await Userfriends.findOrCreate({
       where: {
         userId: req.user.id,
         friendId: foundId
       }
     })
-    res.status(201).json(friend[0])
+    res.status(201).json(findFriend)
   } catch (error) {
     next(error)
   }

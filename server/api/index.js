@@ -8,7 +8,7 @@ router.use('/pantry', require('./pantry'))
 router.use('/bookmarks', require('./bookmarks'))
 router.use('/ingredients', require('./ingredients'))
 router.use('/yamiDinners', require('./yamiDinners'))
-router.use('/sockets', require('./sockets'))
+// router.use('/sockets', require('./sockets'))
 router.use('/messages', require('./messages'))
 
 router.use((req, res, next) => {

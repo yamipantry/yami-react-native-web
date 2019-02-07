@@ -40,7 +40,7 @@ router.post('/', async (req, res, next) => {
     // const chatObj = {
     //   yamiDinnerId = `${yamiDinner.lng}, ${yamiDinner.lat}, ${Date.now()}`,
     //   userId: req.user.id,
-    //   messages: 'Dammit Tom'
+    //   message: 'Dammit Tom'
     // }
     // await Messages.create(chatObj)
     res.json(yamiDinner)

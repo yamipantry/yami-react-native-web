@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
   try {
     const newObj = {
       yamiDinnerId: req.body.yamiDinnerId,
-      userId: 1,
+      userId: req.user.id,
       ...req.body
     }
     const message = await Messages.create(newObj)

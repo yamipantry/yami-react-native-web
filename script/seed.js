@@ -203,64 +203,19 @@ async function seed() {
     })
   ])
 
-  let ingredients = await Promise.all([
-    Ingredients.create({
-      name: 'Carrots'
-    }),
-    Ingredients.create({
-      name: 'Beans'
-    }),
-    Ingredients.create({
-      name: 'Butternut squash'
-    }),
-    Ingredients.create({
-      name: 'Lettuce'
-    }),
-    Ingredients.create({
-      name: 'Beef'
-    }),
-    Ingredients.create({
-      name: 'Chicken'
-    }),
-    Ingredients.create({
-      name: 'Sugar'
-    }),
-    Ingredients.create({
-      name: 'Rabbit'
-    }),
-    Ingredients.create({
-      name: 'Tomato'
-    }),
-    Ingredients.create({
-      name: 'Celery'
-    }),
-    Ingredients.create({
-      name: 'Love'
-    }),
-    Ingredients.create({
-      name: 'Pepperoni'
-    }),
-    Ingredients.create({
-      name: 'Flour'
-    })
-  ])
+  //updating the ingredients array (to report its length later on and see how many ingredient objects have been added to the 'Ingredients' table)
+  const ingredients = [...unirestIngredients]
 
-  unirestIngredients.forEach(async element => {
-    try {
-      const newIngredient = await Ingredients.create({
-        name: element
-      })
+  try {
+    await Ingredients.bulkCreate(unirestIngredients)
 
-      ingredients.push(newIngredient) //ingredients array above is updated
-      console.log(
-        `The ingredient called ${element} was added to the 'Ingredients' table.`
-      )
-    } catch (err) {
-      console.log(
-        `For some reason, the ingredient called ${element} could not be added to the 'Ingredients' table.`
-      )
-    }
-  })
+    console.log(`bulkCreate succeeded for the 'Ingredients' table.`)
+  } catch (err) {
+    console.log(
+      `For some reason, bulkCreate failed for the 'Ingredients' table.`
+    )
+    console.err(err)
+  }
 
   let recipe = await Promise.all([
     Recipes.create({
@@ -310,29 +265,17 @@ async function seed() {
     })
   ])
 
-  unirestRecipeDetailsFinal.forEach(async recipeDetails => {
-    try {
-      const newRecipe = await Recipes.create({
-        name: recipeDetails.name,
-        instructions: recipeDetails.instructions,
-        description: recipeDetails.description,
-        imageUrl: recipeDetails.imageUrl
-      })
+  //updating the recipe array (to report its length later on and see how many recipe objects have been added to the 'Recipes' table)
+  recipe = recipe.concat(unirestRecipeDetailsFinal)
 
-      recipe.push(newRecipe) //recipe array above is updated
-      console.log(
-        `The recipe called ${
-          recipeDetails.name
-        } was added to the 'Recipes' table.`
-      )
-    } catch (err) {
-      console.log(
-        `For some reason, the recipe called ${
-          recipeDetails.name
-        } could not be added to the 'Recipes' table.`
-      )
-    }
-  })
+  try {
+    await Recipes.bulkCreate(unirestRecipeDetailsFinal)
+
+    console.log(`bulkCreate succeeded for the 'Recipes' table.`)
+  } catch (err) {
+    console.log(`For some reason, bulkCreate failed for the 'Recipes' table.`)
+    console.err(err)
+  }
 
   const ingredientList = await Promise.all([
     Items.create({

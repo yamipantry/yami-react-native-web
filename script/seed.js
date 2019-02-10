@@ -186,6 +186,7 @@ async function seed() {
     console.log(
       `For some reason, bulkCreate failed for the 'Ingredients' table.`
     )
+    console.err(err)
   }
 
   let recipe = await Promise.all([
@@ -236,29 +237,14 @@ async function seed() {
     })
   ])
 
-  unirestRecipeDetailsFinal.forEach(async recipeDetails => {
-    try {
-      const newRecipe = await Recipes.create({
-        name: recipeDetails.name,
-        instructions: recipeDetails.instructions,
-        description: recipeDetails.description,
-        imageUrl: recipeDetails.imageUrl
-      })
+  try {
+    await Recipes.bulkCreate(unirestRecipeDetailsFinal)
 
-      recipe.push(newRecipe) //recipe array above is updated
-      console.log(
-        `The recipe called ${
-          recipeDetails.name
-        } was added to the 'Recipes' table.`
-      )
-    } catch (err) {
-      console.log(
-        `For some reason, the recipe called ${
-          recipeDetails.name
-        } could not be added to the 'Recipes' table.`
-      )
-    }
-  })
+    console.log(`bulkCreate succeeded for the 'Recipes' table.`)
+  } catch (err) {
+    console.log(`For some reason, bulkCreate failed for the 'Recipes' table.`)
+    console.err(err)
+  }
 
   const ingredientList = await Promise.all([
     Items.create({

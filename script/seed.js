@@ -176,6 +176,7 @@ async function seed() {
     })
   ])
 
+  //updating the ingredients array (to report its length later on and see how many ingredient objects have been added to the 'Ingredients' table)
   const ingredients = [...unirestIngredients]
 
   try {
@@ -236,6 +237,9 @@ async function seed() {
       imageUrl: '/rabbit.jpeg'
     })
   ])
+
+  //updating the recipe array (to report its length later on and see how many recipe objects have been added to the 'Recipes' table)
+  recipe = recipe.concat(unirestRecipeDetailsFinal)
 
   try {
     await Recipes.bulkCreate(unirestRecipeDetailsFinal)

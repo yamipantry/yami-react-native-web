@@ -2452,7 +2452,7 @@ let unirestRecipeDetails = [
     title: 'Creamy Tuna Cavatelli',
     readyInMinutes: 50,
     servings: 4,
-    image: 'cava.jpg',
+    image: '/cava.jpg',
     imageType: 'jpg',
     cuisines: [],
     dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],

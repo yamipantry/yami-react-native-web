@@ -1,5 +1,7 @@
 'use strict'
 
+const whatever = require('./test')
+
 const db = require('../server/db')
 const {
   User,
@@ -219,47 +221,62 @@ async function seed() {
 
   let recipe = await Promise.all([
     Recipes.create({
-      name: 'Salad Soup',
+      name: 'Minestrone Soup',
       instructions: [
-        'Turn on fire',
-        'dont burn yourself',
-        'did i mention dont burn yourself'
+        'Turn on fire, high heat',
+        'Saute onions and garlic until browned',
+        'Add other vegetables',
+        'Add  5 cups water and vegetable stock',
+        'Boil for 30 minutes'
       ],
-      description: 'People always burn themselves with this meal',
+      description: 'Gluten Free, Vegan',
       imageUrl: '/salad_soup.jpeg'
     }),
     Recipes.create({
-      name: 'Mystery Dish',
+      name: 'Nachos',
       instructions: [
-        'add ingredient 4',
-        'then add ingredient 3',
-        'what are these? add ingredient 109',
-        'ingredient 225 is the best'
+        'Put chips on plate',
+        'Turn oven on to 400',
+        'Cover in shredded cheese',
+        'Cook in oven for 10 minutes',
+        'Add beans',
+        'add various toppings to your liking'
       ],
-      description:
-        'when all these ingredients are added together, you get 434109225',
-      imageUrl: '/mystery.jpeg'
+      description: "Mama's nachos",
+      imageUrl: '/nachos.jpg'
     }),
     Recipes.create({
       name: 'Rabbit Cacciatore',
       instructions: [
-        'start with sugar',
-        'add carrots',
-        'beans beans beans',
-        'what am i doing this recipe for'
+        'Saute onions, carrots, celery in olive oil',
+        'Saute rabbit in another pan to brown skin',
+        'Add beans and tomatoes to vegetables',
+        'Put rabbit into veggie mix, add  2 cups water',
+        'Simmer for 30 minutes'
       ],
       description: 'This is the best delicious recipe of all time',
       imageUrl: '/rabbit.jpeg'
     }),
     Recipes.create({
-      name: 'Blowfish Delight',
-      instructions: ['dont even try to make this', 'this is not for amateurs'],
+      name: 'CatFish Delight',
+      instructions: [
+        'Saute catfish in oil',
+        'Add garlic and onions to pan',
+        'Once browned, add celery, corn, and tomatoes',
+        'Finish with butter'
+      ],
       description: 'This recipe will only be good with some blowfish',
-      imageUrl: '/blowfish.jpeg'
+      imageUrl: '/catfish.jpg'
     }),
     Recipes.create({
-      name: 'Stewd Rabbit',
-      instructions: ['find rabbit', 'hunt rabbit', 'eat rabbit'],
+      name: 'Beef Stew',
+      instructions: [
+        'Carmelize beef',
+        'Add onions, garlic, celery, and carrots',
+        'Add 5 cups water',
+        'make roux with melted butter and flour',
+        'Simmer for 2 hours, then add roux to stew'
+      ],
       description: 'rabbit cacciatore',
       imageUrl: '/rabbit.jpeg'
     })
@@ -269,134 +286,152 @@ async function seed() {
   recipe = recipe.concat(unirestRecipeDetailsFinal)
 
   try {
-    await Recipes.bulkCreate(unirestRecipeDetailsFinal)
+    // console.log('fin', unirestRecipeDetailsFinal[0].ingredientsIncluded)
+    //   const bulk = await Recipes.bulkCreate(unirestRecipeDetailsFinal, {
+    //   include: [{model: Items, as: 'ingredientsIncluded'}],
 
+    // })
+    unirestRecipeDetailsFinal.forEach(async elem => {
+      const rec = await Recipes.create(elem, {
+        include: [{model: Items, as: 'ingredientsIncluded'}]
+      })
+    })
     console.log(`bulkCreate succeeded for the 'Recipes' table.`)
   } catch (err) {
     console.log(`For some reason, bulkCreate failed for the 'Recipes' table.`)
-    console.err(err)
+    console.error(err)
   }
 
   const ingredientList = await Promise.all([
     Items.create({
-      amount: '2 cups',
+      amount: '1 cup',
       recipeId: 1,
-      ingredientName: 'Beans'
+      ingredientName: 'Onions'
     }),
     Items.create({
-      amount: '1 cups',
+      amount: '1 cup',
       recipeId: 1,
       ingredientName: 'Butternut squash'
     }),
     Items.create({
-      amount: '5 cups',
+      amount: '1/4 cup',
       recipeId: 1,
-      ingredientName: 'Lettuce'
+      ingredientName: 'Garlic'
     }),
     Items.create({
-      amount: '2 cups',
+      amount: '1 cup',
       recipeId: 1,
       ingredientName: 'Celery'
     }),
     Items.create({
-      amount: '2 cups',
-      recipeId: 2,
-      ingredientName: 'Lettuce'
+      amount: '1 cup',
+      recipeId: 1,
+      ingredientName: 'Carrots'
     }),
     Items.create({
       amount: '2 cups',
       recipeId: 2,
-      ingredientName: 'Butternut squash'
+      ingredientName: 'Beans'
     }),
     Items.create({
-      amount: '1 cups',
+      amount: '2 cups',
       recipeId: 2,
-      ingredientName: 'Love'
+      ingredientName: 'Cheddar cheese'
     }),
     Items.create({
-      amount: '5 cups',
+      amount: '1 cup',
       recipeId: 2,
+      ingredientName: 'Jalapenos'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 2,
+      ingredientName: 'Salsa'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 3,
+      ingredientName: 'Onion'
+    }),
+    Items.create({
+      amount: '2',
+      recipeId: 3,
+      ingredientName: 'Rabbit'
+    }),
+    Items.create({
+      amount: '1/4 cup',
+      recipeId: 3,
+      ingredientName: 'Garlic'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 3,
+      ingredientName: 'Celery'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 3,
+      ingredientName: 'Tomato'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 5,
+      ingredientName: 'Corn'
+    }),
+    Items.create({
+      amount: '1 filet',
+      recipeId: 5,
+      ingredientName: 'Catfish'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 5,
+      ingredientName: 'Tomato'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 5,
+      ingredientName: 'Onion'
+    }),
+    Items.create({
+      amount: '1 tbsp',
+      recipeId: 5,
+      ingredientName: 'Garlic'
+    }),
+    Items.create({
+      amount: '1',
+      recipeId: 5,
+      ingredientName: 'Paprika'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 4,
+      ingredientName: 'Onions'
+    }),
+    Items.create({
+      amount: '2 Lbs',
+      recipeId: 4,
+      ingredientName: 'Beef'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 4,
+      ingredientName: 'Celery'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 4,
+      ingredientName: 'Carrots'
+    }),
+    Items.create({
+      amount: '1 cup',
+      recipeId: 4,
       ingredientName: 'Flour'
     }),
     Items.create({
-      amount: '2 cups',
-      recipeId: 3,
-      ingredientName: 'Sugar'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 3,
-      ingredientName: 'Rabbit'
-    }),
-    Items.create({
-      amount: '1 cups',
-      recipeId: 3,
-      ingredientName: 'Carrots'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 3,
-      ingredientName: 'Beans'
-    }),
-    Items.create({
-      amount: '2 cups',
-      recipeId: 3,
-      ingredientName: 'Butternut squash'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 3,
-      ingredientName: 'Tomato'
-    }),
-    Items.create({
-      amount: '2 cups',
-      recipeId: 5,
-      ingredientName: 'Sugar'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 5,
-      ingredientName: 'Rabbit'
-    }),
-    Items.create({
-      amount: '1 cups',
-      recipeId: 5,
-      ingredientName: 'Carrots'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 5,
-      ingredientName: 'Beans'
-    }),
-    Items.create({
-      amount: '2 cups',
-      recipeId: 5,
-      ingredientName: 'Butternut squash'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 5,
-      ingredientName: 'Tomato'
-    }),
-    Items.create({
-      amount: '1 cups',
+      amount: '1 stick',
       recipeId: 4,
-      ingredientName: 'Butternut squash'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 4,
-      ingredientName: 'Chicken'
-    }),
-    Items.create({
-      amount: '2 cups',
-      recipeId: 4,
-      ingredientName: 'Celery'
-    }),
-    Items.create({
-      amount: '1',
-      recipeId: 4,
-      ingredientName: 'Beef'
+      ingredientName: 'Butter'
     })
   ])
 

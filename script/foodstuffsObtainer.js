@@ -24,8 +24,11 @@
 //     console.log(ingredients)
 //   })
 
+const whatever = require('./test')
+
 let unirestIngredientsStrings = [
   'apple',
+  'cabbage',
   'applesauce',
   'apple juice',
   'apple cider',
@@ -113,8 +116,17 @@ let unirestIngredientsStrings = [
   'broccoli carrot cauliflower mix',
   'canned peas and carrots',
   'chicken',
+  'cheddar cheese',
   'chickens',
   'chickpea',
+  'jalapenos',
+  'salsa',
+  'garlic',
+  'butter',
+  'corn',
+  'catfish',
+  'Paprika',
+  'flour',
   'chicken meat',
   'chicken legs',
   'chicken base',
@@ -343,6 +355,8 @@ let unirestIngredientsStrings = [
   'dietetic grape jam',
   'dietetic cherry jam',
   'dietetic apricot jam',
+  'Onions',
+  'Onion',
   'dietetic blueberry jam',
   'dietetic raspberry jam',
   'dietetic strawberry jam',
@@ -1645,6 +1659,7 @@ let unirestIngredientsStrings = [
   'jarlsberg cheese',
   'roquefort cheese',
   'camembert cheese',
+  'Foofoo',
   'mozarella cheese',
   'mascapone cheese',
   'gorgonzola cheese',
@@ -1675,6 +1690,7 @@ let unirestIngredientsStrings = [
   'skim yogurt',
   'greek yogurt',
   'plain yogurt',
+  'olive oil',
   'lowfat yogurt',
   'frozen yogurt',
   'vanilla yogurt',
@@ -1689,6 +1705,10 @@ let unirestIngredientsStrings = [
   'lowfat vanilla greek yogurt',
   'soymilk',
   'soy pulp',
+  'lime juic',
+  'clamato juice',
+  'salt',
+  'beer',
   'soy sauce',
   'soybeans',
   'soy flour',
@@ -1732,11 +1752,38 @@ let unirestIngredientsStrings = [
   'soybeans in pods',
   'red bean paste',
   'yam bean',
+  'potatoes',
+  'Shallot',
+  'white wine',
+  'mustard powder',
+  'clams',
+  'seasoning packet',
+  'littleneck clams',
+  'pot roast',
+  'Potatoes',
+  'salad dressing',
+  'corned beef',
+  'Parmesan cheese',
+  'Parsley',
+  'Lime juice',
+  'Clamato',
+  'Bread crumbs',
+  'Beer',
+  'Milk',
+  'bisquick',
+  'clam juice',
   'fava beans',
+  'fennel',
   'lima beans',
   'navy beans',
   'flat beans',
   'mung beans',
+  'beef broth',
+  'chervil',
+  'cavatelli',
+  'sour cream',
+  'olive oil',
+  'barbecue sauce',
   'caribbean jerk seasoning',
   'jellybeans',
   'wing bean',
@@ -1903,23 +1950,24 @@ let unirestIngredients = unirestIngredientsStrings.map(ingredientName => {
 let unirestRecipeIDObjects = []
 
 let unirestRecipeDetails = [
-  {
-    id: 199412,
-    title: 'Irish Channel Corned Beef and Cabbage',
-    readyInMinutes: 45,
-    servings: 6,
-    image: 'https://spoonacular.com/recipeImages/199412-556x370.jpg',
-    imageType: 'jpg',
-    cuisines: ['european', 'irish'],
-    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
-    diets: ['gluten free', 'dairy free', 'paleolithic', 'primal', 'whole 30'],
-    occasions: ['st patricks day'],
-    winePairing: {},
-    instructions:
-      'Rinse the corned beef and cut off excess fat.Place the onion on the bottom of the slow cooker.Place the corned beef on top of the onion.Add water, chicken broth, carrots and cabbage.Cook on low heat for 8 to 10 hours, or until meat is cooked and vegetables are tender',
-    analyzedInstructions: [{name: '', steps: [Array]}],
-    creditsText: 'Epicurious'
-  },
+  // {
+  //   id: 199412,
+  //   title: 'Irish Channel Corned Beef and Cabbage',
+  //   readyInMinutes: 45,
+  //   servings: 6,
+  //   image: 'https://spoonacular.com/recipeImages/199412-556x370.jpg',
+  //   imageType: 'jpg',
+  //   cuisines: ['european', 'irish'],
+  //   dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+  //   diets: ['gluten free', 'dairy free', 'paleolithic', 'primal', 'whole 30'],
+  //   occasions: ['st patricks day'],
+  //   winePairing: {},
+  //   ingredientsIncluded: '1 each Corned beef, 1/2 cup Onion, 2 cups Chicken broth, 1 each Carrot, 1/2 head Cabbage',
+  //   instructions:
+  //     'Rinse the corned beef and cut off excess fat.Place the onion on the bottom of the slow cooker.Place the corned beef on top of the onion.Add water, chicken broth, carrots and cabbage.Cook on low heat for 8 to 10 hours, or until meat is cooked and vegetables are tender',
+  //   analyzedInstructions: [{name: '', steps: [Array]}],
+  //   creditsText: 'Epicurious'
+  // },
   {
     id: 626382,
     title: 'Barbecue Beef Stew',
@@ -1927,6 +1975,8 @@ let unirestRecipeDetails = [
     servings: 6,
     image: 'https://spoonacular.com/recipeImages/626382-556x370.jpg',
     imageType: 'jpg',
+    ingredientsIncluded:
+      '2 tbsp Olive oil, 1 each Beef, 1 cup Onions, 1 each Carrot, 2 each Potatoes, 1 cup Barbecue sauce, 1/2 cup Beef broth',
     cuisines: ['bbq', 'barbecu'],
     dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
     diets: ['gluten free', 'dairy free'],
@@ -1944,6 +1994,8 @@ let unirestRecipeDetails = [
     servings: 6,
     image: 'https://spoonacular.com/recipeImages/198235-556x370.jpg',
     imageType: 'jpg',
+    ingredientsIncluded:
+      '1 tbsp Olive oil, 1 each Beef, 2 each Onions, 1 cup Beef stock, 1 each Carrot',
     cuisines: [],
     dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
     diets: ['gluten free', 'dairy free', 'paleolithic', 'primal', 'whole 30'],
@@ -1966,33 +2018,36 @@ let unirestRecipeDetails = [
     diets: ['dairy free'],
     occasions: [],
     winePairing: {},
+    ingredientsIncluded:
+      '1 tbsp Mustard powder, 1/2 cup Flour, 1/2 cup Onion, 1/2 cup Carrots, 1 each Beef, 4 each Potatoes',
     instructions:
       'Heat oven to 240C/220C fan/gas 9.Mix the flour and mustard powder withsome seasoning, then rub all over the beef. Put the onion and carrots into a roasting tin and set the beef on top,then cook for 20 mins. Reduce oven to 190C/170C fan/gas 5 and continue to cook the beef for 30 minutes if you like it rare, 40 minutes for medium rare and 1 hr for well done. Remove the beef and carrots from the oven, place onto warm plates or platters and cover with foil to keep warm.Let the beef rest for 30 minutes while you turn up the oven to cook your Yorkshirepuds and finish the potatoes.For the gravy, put the tin with all the meat juices and onions back onto the hob. Stir in the flour, scraping all the stuck bits off the bottom of the tin.Cook for 30 seconds, then slowly stir in the stock, little by little. Bubble to a nice gravy, season, then serve with the beef, carved into slices, carrots and all the other trimmings',
     analyzedInstructions: [{name: '', steps: [Array]}],
     creditsText: 'BBC Good Food'
   },
-  {
-    id: 81789,
-    title: 'Roasted Beef Brisket',
-    readyInMinutes: 45,
-    servings: 10,
-    image: 'https://spoonacular.com/recipeImages/81789-556x370.jpg',
-    imageType: 'jpg',
-    cuisines: ['jewish'],
-    dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
-    diets: ['gluten free', 'dairy free'],
-    occasions: ['hanukkah'],
-    winePairing: {
-      pairedWines: ['shiraz', 'tempranillo', 'zinfandel'],
-      pairingText:
-        "Shiraz, Tempranillo, and Zinfandel are my top picks for Beef Brisket. All these red wines can handle the meaty, smokey flavor of brisket. If you're talking traditional Jewish brisket, you'll want to look for a kosher red wine. The Penfolds Bin 8 Cabernet-Shiraz with a 4.1 out of 5 star rating seems like a good match. It costs about 20 dollars per bottle.",
-      productMatches: [[Object]]
-    },
-    instructions: 'No instructions at this time',
-    analyzedInstructions: [],
-    sourceName: null,
-    creditsText: null
-  },
+  // // {
+  // //   id: 81789,
+  // //   title: 'Roasted Beef Brisket',
+  // //   readyInMinutes: 45,
+  // //   servings: 10,
+  // //   image: 'https://spoonacular.com/recipeImages/81789-556x370.jpg',
+  // //   imageType: 'jpg',
+  // //   cuisines: ['jewish'],
+  // //   dishTypes: ['lunch', 'main course', 'main dish', 'dinner'],
+  // //   diets: ['gluten free', 'dairy free'],
+  // //   occasions: ['hanukkah'],
+  // //   winePairing: {
+  // //     pairedWines: ['shiraz', 'tempranillo', 'zinfandel'],
+  // //     pairingText:
+  // //       "Shiraz, Tempranillo, and Zinfandel are my top picks for Beef Brisket. All these red wines can handle the meaty, smokey flavor of brisket. If you're talking traditional Jewish brisket, you'll want to look for a kosher red wine. The Penfolds Bin 8 Cabernet-Shiraz with a 4.1 out of 5 star rating seems like a good match. It costs about 20 dollars per bottle.",
+  // //     productMatches: [[Object]]
+  // //   },
+  // //   ingredientsIncluded: '',
+  // //   instructions: 'No instructions at this time',
+  // //   analyzedInstructions: [],
+  // //   sourceName: null,
+  // //   creditsText: null
+  // // },
   {
     id: 368349,
     title: 'Tangy Pot Roast',
@@ -2005,6 +2060,8 @@ let unirestRecipeDetails = [
     diets: ['gluten free', 'dairy free'],
     occasions: [],
     winePairing: {},
+    ingredientsIncluded:
+      '2 each Potatoes, 1 each Carrot, 1/2 chopped Onion, 1 each Pot roast, 1 cup Salad dressing',
     instructions:
       'Place the potatoes, carrots and onion in a 5-qt slow cooker. Cut roast in half; rub with salt and pepper. Place over vegetables. Combine salad dressing and wine; pour over roast.  Cover and cook on low for 7-8 hours or until meat is tender. Skim fat from cooking juices; thicken juices if desired',
     analyzedInstructions: [{name: '', steps: [Array]}],
@@ -2022,12 +2079,14 @@ let unirestRecipeDetails = [
     diets: ['gluten free', 'dairy free', 'whole 30'],
     occasions: [],
     winePairing: {},
+    ingredientsIncluded:
+      '1 each Corned beef, 1 each Seasoning packet, 2 cups Cabbage, 4 each Potatoes, 1/2 cup Beef broth, 1 each Carrot, 1 cup Onion',
     instructions:
       'In a 6-qt. pressure cooker, combine water and contents of corned beef seasoning packet; add beef. Close cover securely. Turn regulator knob to pressure and select high pressure. Cook for 45 minutes.  Meanwhile, in a large saucepan, combine the cabbage, potatoes and broth. Bring to a boil. Reduce heat; cover and simmer for 10 minutes. Add carrots and onion. Cover and simmer 20-25 minutes longer or until vegetables are tender; drain. Release pressure according to manual instructions. Remove beef to a serving platter. Discard cooking liquid. Serve beef with cabbage, potatoes, carrots and onion',
     analyzedInstructions: [{name: '', steps: [Array]}],
     creditsText: 'Taste of Home'
   },
-  {
+  /*{
     id: 608865,
     title: 'Penne with Sausage and Roasted Tomatoes',
     readyInMinutes: 65,
@@ -2039,6 +2098,7 @@ let unirestRecipeDetails = [
     diets: ['dairy free'],
     occasions: [],
     winePairing: {pairedWines: [], pairingText: '', productMatches: []},
+
     instructions:
       'Preheat oven to 225 degrees. Line a baking sheet with aluminum foil. Peel 6 cloves garlic and toss with tomatoes, 1 tablespoon olive oil, salt and pepper. Roast on prepared baking sheet in preheated oven for 45 minutes. Remove from oven and set aside. When the there is about 15 minutes left for the tomatoes, bring a large pot of water to boil. Cook pasta according to package directions. Drain but reserve 1/4 cup pasta water. While pasta is cooking, cook sausage in a large skillet over medium high heat until cooked through. Drain and reserve 1 tablespoon pan drippings.Add remaining tablespoon of olive oil to pan drippings. Return sausage to the pan. Add garlic, cook 30 seconds. Add in pasta. Stir. Pour tomatoes, garlic and any pan juices that accumulated on the aluminum foil into the pan. Gently toss to combine. If pasta appears dry, add reserved pasta water. Sprinkle with basil and serve',
     analyzedInstructions: [{name: '', steps: [Array]}],
@@ -2269,7 +2329,7 @@ let unirestRecipeDetails = [
       'Combine the lime juice, tomato-clam juice and hot sauce in a pitcher.Mix well and refrigerate until ready to serve.Spread a small amount of salt in a shallow saucer. Moisten the rims of 4 tall glasses with water and dip in the salt. Fill with ice, then fill halfway with the tomato-clam juice mixture. Top with beer and garnish with celery stalks and lime wedges',
     analyzedInstructions: [{name: '', steps: [Array]}],
     creditsText: 'Foodnetwork'
-  },
+  },*/
   {
     id: 598988,
     title: 'Baked Clams',
@@ -2287,8 +2347,10 @@ let unirestRecipeDetails = [
         "Clams on the menu? Try pairing with Chardonnay, Muscadet, and Riesling. Buttery chardonnay is great for scallops, shrimp, crab, and lobster, while muscadet is a classic pick for mussels, oysters, and clams. If you've got some spice in your shellfish, a semi-dry riesling can balance out the heat. The Waterbrook Reserve Chardonnay with a 5 out of 5 star rating seems like a good match. It costs about 20 dollars per bottle.",
       productMatches: [[Object]]
     },
+    ingredientsIncluded:
+      '2 lbs Clams, 2 cups Bread crumbs, 1/4 cup Parsley, 1/4 cup Parmesan cheese, 2 tbsp Olive oil, 1 cup Clam juice',
     instructions:
-      'Preheat the broiler.Open the clams so that they are on the half shell, and set them aside.Mix together the bread crumbs, parsley, Parmesan cheese, olive, oil, and clam juice into a semi-dry paste.Spoon and pat the breadcrumb mixture onto each clam. Place them in a broiler pan and put them under the broiler for 5 to 8 minutes or until the breadcrumbs are browned on top',
+      'Preheat the broiler.Open the clams so that they are on the half shell, and set them aside.Mix together the bread crumbs, parsley, Parmesan cheese, olive oil, and clam juice into a semi-dry paste.Spoon and pat the breadcrumb mixture onto each clam. Place them in a broiler pan and put them under the broiler for 5 to 8 minutes or until the breadcrumbs are browned on top',
     analyzedInstructions: [{name: '', steps: [Array]}],
     creditsText: 'Leites Culinaria'
   },
@@ -2304,6 +2366,8 @@ let unirestRecipeDetails = [
     diets: ['gluten free', 'dairy free', 'pescatarian'],
     occasions: [],
     winePairing: {pairedWines: [], pairingText: '', productMatches: []},
+    ingredientsIncluded:
+      '2 ounces Lime juice, 2 cups Clamato juice, 1 oz Salt, 2 cups Beer, 1 stick Celery',
     instructions:
       'Watch how to make this recipe.In a pitcher, combine the lime juice, tomato-clam juice and hot sauce. Mix well and chill until ready to serve.Spread a small amount of salt into a shallow saucer. Moisten the rims of tall glasses and coat them in salt. Fill the glasses with ice and pour in the cocktail.Add the beer and garnish each glass with a celery stick.',
     analyzedInstructions: [{name: '', steps: [Array]}],
@@ -2321,6 +2385,8 @@ let unirestRecipeDetails = [
     diets: ['gluten free', 'primal', 'pescatarian'],
     occasions: [],
     winePairing: {},
+    ingredientsIncluded:
+      '1/4 cups Bisquick, 1 cup Milk, 1 can Clams, 1 each Onion, 1 stalk Celery, 2 each Potatoes',
     instructions:
       'Heat oven to 450F.In medium bowl, stir 2 1/4 cups Bisquick mix and the milk until soft dough forms.Drop by 6 spoonfuls onto ungreased cookie sheet.Bake 10 minutes or until golden brown.Meanwhile, in 2-quart saucepan, mix remaining ingredients. Heat to boiling over medium heat, stirring occasionally.To serve, split biscuits in half; place on 6 individual plates. Spoon generous 1/4 cup hot chowder mixture over bottom of each biscuit.Top with remaining biscuit halves. Spoon 1/4 cup chowder mixture over top of each biscuit',
     analyzedInstructions: [{name: '', steps: [Array]}],
@@ -2344,6 +2410,8 @@ let unirestRecipeDetails = [
     ],
     occasions: [],
     winePairing: {},
+    ingredientsIncluded:
+      '2 tbsp Olive oil, 1 each Shallot, 1/2 cup Fennel, 2 tbsp White wine, 1 cup Clam juice, 2 lbs Littleneck clams',
     instructions:
       'In a large sauté pan, heat olive oil over medium and add shallots and garlic.Cook one minute.Add fennel and white wine, bring to medium high and cook for another two minutes to reduce the wine a bit.Add clam juice and pepper and cover. Bring to a high simmer and cook for five minutes.Add cleaned little necks and cover (best if the cover is see through so you can watch the clams pop open) cook over high simmer  to a low boil for five minutes. You will see the clams pop open one by one.Once they all pop open (no more than five minutes), with tongs, remove to serving dishes. Discard any clams that did not pop open. Spoon broth and cooked fennel over clams, being careful not to spoon any sediment from the bottom of the pan as some sand will settle there that didn’t get cleaned off.Sprinkle the servings with the fennel fronds',
     analyzedInstructions: [{name: '', steps: [Array]}],
@@ -2366,6 +2434,8 @@ let unirestRecipeDetails = [
         "Chardonnay, Muscadet, and Riesling are great choices for Clams. Buttery chardonnay is great for scallops, shrimp, crab, and lobster, while muscadet is a classic pick for mussels, oysters, and clams. If you've got some spice in your shellfish, a semi-dry riesling can balance out the heat. You could try Buddha Kat Winery Chardonnay. Reviewers quite like it with a 4 out of 5 star rating and a price of about 25 dollars per bottle.",
       productMatches: [[Object]]
     },
+    ingredientsIncluded:
+      '1 can Clams, 1/2 cup Onion, 1/2 cup Celery, 1/2 cup Carrots, 2 each Potatoes',
     instructions:
       'In a large saucepan, combine the first five ingredients. Bring to a boil. Reduce heat; cover and simmer for 5 minutes.  Sprinkle with cheese if desired.',
     analyzedInstructions: [{name: '', steps: [Array]}],
@@ -2388,6 +2458,8 @@ let unirestRecipeDetails = [
         'No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.',
       productMatches: []
     },
+    ingredientsIncluded:
+      '1 bag Cavatelli, 1/2 cup Onion, 1 stalk Celery, 1 cup Sour cream',
     instructions:
       'Heat pasta, water, chervil, pepper, vegetables and clam juice to boiling in 10-inch skillet; reduce heat. Cover and simmer 20 to 25 minutes, stirring occasionally, until pasta and vegetables are tender.Stir flour into sour cream dip. Gradually stir sour cream dip, cheese and tuna into pasta mixture. Cook over medium heat, stirring occasionally, until hot',
     analyzedInstructions: [{name: '', steps: [Array]}]
@@ -2401,7 +2473,7 @@ let unirestRecipeDetailsFinal = unirestRecipeDetails.map(element => {
   recipeDetails.description =
     element.cuisines.join('-') + '-' + element.diets.join('-')
   recipeDetails.imageUrl = element.image
-
+  recipeDetails.ingredientsIncluded = whatever(element.ingredientsIncluded)
   return recipeDetails
 })
 
